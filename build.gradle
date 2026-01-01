@@ -154,10 +154,10 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    implementation fg.deobf("maven.modrinth:epic-fight:${epicfight_version}")
-    implementation fg.deobf("maven.modrinth:epic-fight-invincible-lib:${invincible_lib_version}")
-    implementation fg.deobf("curse.maven:epic-fight-avalon-1268823:7225899")
-    implementation fg.deobf("libs:EpicFightNightfall:2.4")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7345468")
+    implementation fg.deobf("curse.maven:epic-fight-invincible-1184379:7389802")
+    implementation fg.deobf("curse.maven:epic-fight-avalon-1268823:7380216")
+    implementation fg.deobf("curse.maven:epicfight-nightfall-1307848:7391941")
 
     implementation fg.deobf("curse.maven:lendercataclysm-551586:6906993")
     implementation fg.deobf("curse.maven:curios-309927:6418456")
