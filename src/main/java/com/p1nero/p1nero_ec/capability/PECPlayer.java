@@ -41,17 +41,17 @@ public class PECPlayer {
 
     public static void addSkillPoint(ServerPlayer serverPlayer) {
         serverPlayer.heal(2);
-        double current = DataManager.skillPoint.get(serverPlayer);
+        double current = PECDataManager.skillPoint.get(serverPlayer);
         if (current < PECPlayer.MAX_SKILL_POINTS) {
-            DataManager.skillPoint.put(serverPlayer, current + 1);
+            PECDataManager.skillPoint.put(serverPlayer, current + 1);
             serverPlayer.connection.send(new ClientboundSoundPacket(PECSounds.GAIN_ABILITY_POINTS.getHolder().orElseThrow(), SoundSource.PLAYERS, serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ(), (float) (1.0F + 0.1F * current), (float) (0.7F + 0.1F * current), serverPlayer.getRandom().nextInt()));
         }
     }
 
     public static void setSkillPoint(ServerPlayer serverPlayer, int point) {
         if (point < PECPlayer.MAX_SKILL_POINTS && point >= 0) {
-            int current = DataManager.skillPoint.get(serverPlayer).intValue();
-            DataManager.skillPoint.put(serverPlayer, (double) point);
+            int current = PECDataManager.skillPoint.get(serverPlayer).intValue();
+            PECDataManager.skillPoint.put(serverPlayer, (double) point);
             //增加就播音效
             if (point > current) {
                 serverPlayer.connection.send(new ClientboundSoundPacket(PECSounds.GAIN_ABILITY_POINTS.getHolder().orElseThrow(), SoundSource.PLAYERS, serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ(), 1.0F + 0.1F * point, 0.7F + 0.1F * point, serverPlayer.getRandom().nextInt()));
@@ -60,7 +60,7 @@ public class PECPlayer {
     }
 
     public static boolean hasSkillPoint(Player player, int count) {
-        return DataManager.skillPoint.get(player) > count;
+        return PECDataManager.skillPoint.get(player) > count;
     }
 
     public static boolean consumeSkillPoint(ServerPlayer serverPlayer, int consumeValue) {
@@ -76,7 +76,7 @@ public class PECPlayer {
     }
 
     public static int getSkillPoint(Player player) {
-        return DataManager.skillPoint.get(player).intValue();
+        return PECDataManager.skillPoint.get(player).intValue();
     }
 
     public int getLastSkillPoints() {

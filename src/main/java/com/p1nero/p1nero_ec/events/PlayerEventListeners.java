@@ -2,7 +2,7 @@ package com.p1nero.p1nero_ec.events;
 
 
 import com.p1nero.p1nero_ec.PECMod;
-import com.p1nero.p1nero_ec.capability.DataManager;
+import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.p1nero_ec.capability.PECCapabilityProvider;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +20,7 @@ public class PlayerEventListeners {
         Level level = player.level();
         if (player instanceof ServerPlayer serverPlayer) {
             PECCapabilityProvider.syncPlayerDataToClient(serverPlayer);
-            DataManager.skillPoint.put(serverPlayer, 0D);
+            PECDataManager.skillPoint.put(serverPlayer, 0D);
         }
     }
 
@@ -29,7 +29,7 @@ public class PlayerEventListeners {
         Player player = event.getEntity();
         if (player instanceof ServerPlayer serverPlayer) {
             PECCapabilityProvider.syncPlayerDataToClient(serverPlayer);
-            DataManager.skillPoint.put(serverPlayer, 0D);
+            PECDataManager.skillPoint.put(serverPlayer, 0D);
         }
     }
 

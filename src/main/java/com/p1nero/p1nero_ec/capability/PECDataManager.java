@@ -14,38 +14,90 @@ import net.minecraft.world.entity.player.Player;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DataManager {
+public class PECDataManager {
     private final static Set<String> EXISTING_ID = new HashSet<>();
     public static BoolData firstJoint = new BoolData("first_joint", false);
     public static DoubleData skillPoint = new DoubleData("skill_point", 0);
     public static BoolData isLockOn = new BoolData("is_lock_on", false);
+    //能否使用技能
+    public static BoolData TIDAL_CLAW_2 = new BoolData("tidal_claw_2", false);
+    public static BoolData TIDAL_CLAW_3 = new BoolData("tidal_claw_3", false);
+    public static BoolData CERAUNUS_1 = new BoolData("ceraunus_1", false);
+    public static BoolData CERAUNUS_2 = new BoolData("ceraunus_2", false);
+    public static BoolData CERAUNUS_3 = new BoolData("ceraunus_3", false);
+    public static BoolData INFERNAL_FORGE_1 = new BoolData("infernal_forge_1", false);
+    public static BoolData INFERNAL_FORGE_2 = new BoolData("infernal_forge_2", false);
+    public static BoolData INFERNAL_FORGE_3 = new BoolData("infernal_forge_3", false);
+    public static BoolData GAUNTLET_OF_GUARD_2 = new BoolData("gauntlet_of_guard_2", false);
+    public static BoolData GAUNTLET_OF_GUARD_3 = new BoolData("gauntlet_of_guard_3", false);
+    public static BoolData DUAL_ANNIHILATOR_1 = new BoolData("dual_annihilator_1", false);
+    public static BoolData DUAL_ANNIHILATOR_2 = new BoolData("dual_annihilator_2", false);
+    public static BoolData SOUL_RENDER_1 = new BoolData("soul_render_1", false);
+    public static BoolData SOUL_RENDER_2 = new BoolData("soul_render_2", false);
+    public static BoolData SOUL_RENDER_3 = new BoolData("soul_render_3", false);
+    public static BoolData ASTRAPE_1 = new BoolData("astrape_1", false);
+    public static BoolData ASTRAPE_2 = new BoolData("astrape_2", false);
+    public static BoolData THE_INCINERATOR_2 = new BoolData("the_incinerator_2", false);
+    public static BoolData THE_INCINERATOR_3 = new BoolData("the_incinerator_3", false);
+    public static BoolData WRATH_OF_THE_DESERT_1 = new BoolData("wrath_of_the_desert_1", false);
+    public static BoolData WRATH_OF_THE_DESERT_2 = new BoolData("wrath_of_the_desert_2", false);
+    public static BoolData WRATH_OF_THE_DESERT_3 = new BoolData("wrath_of_the_desert_3", false);
+
+    /**
+     * 初始化玩家是否可以使用武器技能，用于逐步解锁
+     */
+    public static void resetAll(ServerPlayer player, boolean canUse) {
+        TIDAL_CLAW_2.put(player, canUse);
+        TIDAL_CLAW_2.put(player, canUse);
+        TIDAL_CLAW_3.put(player, canUse);
+        CERAUNUS_1.put(player, canUse);
+        CERAUNUS_2.put(player, canUse);
+        CERAUNUS_3.put(player, canUse);
+        INFERNAL_FORGE_1.put(player, canUse);
+        INFERNAL_FORGE_2.put(player, canUse);
+        INFERNAL_FORGE_3.put(player, canUse);
+        GAUNTLET_OF_GUARD_2.put(player, canUse);
+        GAUNTLET_OF_GUARD_3.put(player, canUse);
+        DUAL_ANNIHILATOR_1.put(player, canUse);
+        DUAL_ANNIHILATOR_2.put(player, canUse);
+        SOUL_RENDER_1.put(player, canUse);
+        SOUL_RENDER_2.put(player, canUse);
+        SOUL_RENDER_3.put(player, canUse);
+        ASTRAPE_1.put(player, canUse);
+        ASTRAPE_2.put(player, canUse);
+        THE_INCINERATOR_2.put(player, canUse);
+        THE_INCINERATOR_3.put(player, canUse);
+        WRATH_OF_THE_DESERT_1.put(player, canUse);
+        WRATH_OF_THE_DESERT_2.put(player, canUse);
+        WRATH_OF_THE_DESERT_3.put(player, canUse);
+    }
 
     public static void putData(Player player, String key, double value) {
-        getSMCPlayer(player).putDouble(key, value);
+        getPECPlayer(player).putDouble(key, value);
     }
 
     public static void putData(Player player, String key, String value) {
-        getSMCPlayer(player).putString(key, value);
+        getPECPlayer(player).putString(key, value);
     }
 
     public static void putData(Player player, String key, boolean value) {
-        getSMCPlayer(player).putBoolean(key, value);
+        getPECPlayer(player).putBoolean(key, value);
     }
 
     public static boolean getBool(Player player, String key) {
-        return getSMCPlayer(player).getBoolean(key);
+        return getPECPlayer(player).getBoolean(key);
     }
 
     public static double getDouble(Player player, String key) {
-        return getSMCPlayer(player).getDouble(key);
+        return getPECPlayer(player).getDouble(key);
     }
 
     public static String getString(Player player, String key) {
-        return getSMCPlayer(player).getString(key);
+        return getPECPlayer(player).getString(key);
     }
 
-    public static PECPlayer getSMCPlayer(Player player) {
-        return player.getCapability(PECCapabilityProvider.TCR_PLAYER).orElse(new PECPlayer());
+    public static PECPlayer getPECPlayer(Player player) {
+        return player.getCapability(PECCapabilityProvider.PEC_PLAYER).orElse(new PECPlayer());
     }
 
 
@@ -68,12 +120,12 @@ public class DataManager {
         }
 
         public void init(Player player) {
-            isLocked = getSMCPlayer(player).getBoolean(key + "isLocked");
+            isLocked = getPECPlayer(player).getBoolean(key + "isLocked");
 
         }
 
         public boolean isLocked(Player player) {
-            return getSMCPlayer(player).getBoolean(key + "isLocked");
+            return getPECPlayer(player).getBoolean(key + "isLocked");
         }
 
         public boolean isLocked(CompoundTag playerData) {
@@ -81,12 +133,12 @@ public class DataManager {
         }
 
         public void lock(Player player) {
-            getSMCPlayer(player).putBoolean(key + "isLocked", true);
+            getPECPlayer(player).putBoolean(key + "isLocked", true);
             isLocked = true;
         }
 
         public void unLock(Player player) {
-            getSMCPlayer(player).putBoolean(key + "isLocked", false);
+            getPECPlayer(player).putBoolean(key + "isLocked", false);
             LocalPlayer localPlayer = Minecraft.getInstance().player;
             isLocked = false;
         }
@@ -115,16 +167,18 @@ public class DataManager {
         @Override
         public void put(Player player, String value) {
             if (!isLocked(player)) {
-                getSMCPlayer(player).putString(key, value);
+                getPECPlayer(player).putString(key, value);
                 if (player instanceof ServerPlayer serverPlayer) {
                     PECPacketRelay.sendToPlayer(PECPacketHandler.INSTANCE, new PersistentStringDataSyncPacket(key, isLocked, value), serverPlayer);
+                } else {
+                    PECPacketRelay.sendToServer(PECPacketHandler.INSTANCE, new PersistentStringDataSyncPacket(key, isLocked, value));
                 }
             }
         }
 
         @Override
         public String get(Player player) {
-            return getSMCPlayer(player).getString(key);
+            return getPECPlayer(player).getString(key);
         }
 
         public String get(CompoundTag playerData) {
@@ -143,23 +197,25 @@ public class DataManager {
         }
 
         public void init(Player player) {
-            isLocked = getSMCPlayer(player).getBoolean(key + "isLocked");
+            isLocked = getPECPlayer(player).getBoolean(key + "isLocked");
             put(player, defaultValue);
         }
 
         @Override
         public void put(Player player, Double value) {
             if (!isLocked(player)) {
-                getSMCPlayer(player).putDouble(key, value);
+                getPECPlayer(player).putDouble(key, value);
                 if (player instanceof ServerPlayer serverPlayer) {
                     PECPacketRelay.sendToPlayer(PECPacketHandler.INSTANCE, new PersistentDoubleDataSyncPacket(key, isLocked, value), serverPlayer);
+                } else {
+                    PECPacketRelay.sendToServer(PECPacketHandler.INSTANCE, new PersistentDoubleDataSyncPacket(key, isLocked, value));
                 }
             }
         }
 
         @Override
         public Double get(Player player) {
-            return getSMCPlayer(player).getDouble(key);
+            return getPECPlayer(player).getDouble(key);
         }
 
         public double get(CompoundTag playerData) {
@@ -178,7 +234,7 @@ public class DataManager {
         }
 
         public void init(Player player) {
-            isLocked = getSMCPlayer(player).getBoolean(key + "isLocked");
+            isLocked = getPECPlayer(player).getBoolean(key + "isLocked");
             put(player, defaultBool);
         }
 
@@ -187,7 +243,7 @@ public class DataManager {
             if (isLocked(player))
                 return;
 
-            getSMCPlayer(player).putBoolean(key, value);
+            getPECPlayer(player).putBoolean(key, value);
             if (player instanceof ServerPlayer serverPlayer) {
                 PECPacketRelay.sendToPlayer(PECPacketHandler.INSTANCE, new PersistentBoolDataSyncPacket(key, isLocked, value), serverPlayer);
             } else {
@@ -197,7 +253,7 @@ public class DataManager {
 
         @Override
         public Boolean get(Player player) {
-            return getSMCPlayer(player).getBoolean(key);
+            return getPECPlayer(player).getBoolean(key);
         }
 
         public boolean get(CompoundTag playerData) {

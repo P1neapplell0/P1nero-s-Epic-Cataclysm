@@ -1,6 +1,6 @@
 package com.p1nero.p1nero_ec.network.packet.clientbound;
 
-import com.p1nero.p1nero_ec.capability.DataManager;
+import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.p1nero_ec.network.BasePacket;
 import com.p1nero.p1nero_ec.network.packet.clientbound.helper.DistHelper;
 import com.p1nero.p1nero_ec.network.packet.clientbound.helper.PECClientHandler;
@@ -27,11 +27,11 @@ public record PersistentDoubleDataSyncPacket(String key, boolean isLocked, doubl
     public void execute(Player player) {
         if (player != null) {
             if (isLocked) {
-                DataManager.putData(player, key + "isLocked", true);
+                PECDataManager.putData(player, key + "isLocked", true);
                 return;
             }
-            DataManager.putData(player, key, value);
-            DataManager.putData(player, key + "isLocked", false);
+            PECDataManager.putData(player, key, value);
+            PECDataManager.putData(player, key + "isLocked", false);
         }
         DistHelper.runClient(() -> () -> {
             PECClientHandler.syncDoubleData(key, isLocked, value);

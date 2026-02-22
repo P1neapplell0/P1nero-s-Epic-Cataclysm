@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 @Mod.EventBusSubscriber(modid = PECMod.MOD_ID)
 public class PECCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-    public static Capability<PECPlayer> TCR_PLAYER = CapabilityManager.get(new CapabilityToken<>() {
+    public static Capability<PECPlayer> PEC_PLAYER = CapabilityManager.get(new CapabilityToken<>() {
     });
 
     private PECPlayer PECPlayer = null;
@@ -31,7 +31,7 @@ public class PECCapabilityProvider implements ICapabilityProvider, INBTSerializa
     @SubscribeEvent
     public static void attachEntityCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player player) {
-            if (!player.getCapability(PECCapabilityProvider.TCR_PLAYER).isPresent()) {
+            if (!player.getCapability(PECCapabilityProvider.PEC_PLAYER).isPresent()) {
                 event.addCapability(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "pec_player"), new PECCapabilityProvider());
             }
         }
@@ -41,8 +41,8 @@ public class PECCapabilityProvider implements ICapabilityProvider, INBTSerializa
     public static void onPlayerCloned(PlayerEvent.Clone event) {
         event.getOriginal().reviveCaps();
         if (event.isWasDeath()) {
-            event.getOriginal().getCapability(PECCapabilityProvider.TCR_PLAYER).ifPresent(oldStore -> {
-                event.getEntity().getCapability(PECCapabilityProvider.TCR_PLAYER).ifPresent(newStore -> {
+            event.getOriginal().getCapability(PECCapabilityProvider.PEC_PLAYER).ifPresent(oldStore -> {
+                event.getEntity().getCapability(PECCapabilityProvider.PEC_PLAYER).ifPresent(newStore -> {
                     newStore.copyFrom(oldStore);
                     newStore.syncToClient(((ServerPlayer) event.getEntity()));
                 });
@@ -66,7 +66,7 @@ public class PECCapabilityProvider implements ICapabilityProvider, INBTSerializa
         if (player == null) {
             return new PECPlayer();
         }
-        return player.getCapability(PECCapabilityProvider.TCR_PLAYER).orElse(new PECPlayer());
+        return player.getCapability(PECCapabilityProvider.PEC_PLAYER).orElse(new PECPlayer());
     }
 
     public static void syncPlayerDataToClient(ServerPlayer serverPlayer) {
@@ -83,7 +83,7 @@ public class PECCapabilityProvider implements ICapabilityProvider, INBTSerializa
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
-        if (capability == TCR_PLAYER) {
+        if (capability == PEC_PLAYER) {
             return optional.cast();
         }
 

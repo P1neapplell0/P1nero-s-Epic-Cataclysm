@@ -3,7 +3,7 @@ package com.p1nero.p1nero_ec.events;
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.p1nero.p1nero_ec.PECMod;
-import com.p1nero.p1nero_ec.capability.DataManager;
+import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.p1nero_ec.capability.PECCapabilityProvider;
 import com.p1nero.p1nero_ec.capability.PECPlayer;
 import com.p1nero.p1nero_ec.client.gui.CustomGuiRenderer;
@@ -61,13 +61,13 @@ public class ClientForgeEvents {
             PECPlayer pecPlayer = PECCapabilityProvider.getPlayer(localPlayer);
             boolean currentLockOn = localPlayerPatch.isTargetLockedOn();
             if (pecPlayer.isClientLockOn() != currentLockOn) {
-                DataManager.isLockOn.put(localPlayer, currentLockOn);
+                PECDataManager.isLockOn.put(localPlayer, currentLockOn);
                 pecPlayer.setClientLockOn(currentLockOn);
             }
 
 
             CustomGuiRenderer.update();
-            int currentSkillPoint = DataManager.skillPoint.get(localPlayer).intValue();
+            int currentSkillPoint = PECDataManager.skillPoint.get(localPlayer).intValue();
             if (pecPlayer.getLastSkillPoints() != currentSkillPoint) {
                 pecPlayer.setLastSkillPoints(currentSkillPoint);
                 for (int i = 0; i < PECPlayer.MAX_SKILL_POINTS; i++) {

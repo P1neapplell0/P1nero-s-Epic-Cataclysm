@@ -1,12 +1,10 @@
 package com.p1nero.p1nero_ec.client;
 
 import com.p1nero.p1nero_ec.PECMod;
-import com.p1nero.p1nero_ec.capability.DataManager;
 import com.p1nero.p1nero_ec.capability.PECPlayer;
 import com.p1nero.p1nero_ec.skills.PECWeaponInnateSkillBase;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
