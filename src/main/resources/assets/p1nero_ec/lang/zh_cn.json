@@ -4,6 +4,7 @@
   "key.p1nero_ec.skill_2": "技能 2",
   "key.p1nero_ec.skill_3": "技能 3",
   "info.p1nero_ec.skill_point_lack": "释放该技能需 %d 技能点",
+  "info.p1nero_ec.need_target": "§4找不到目标！",
   "skill.p1nero_ec.desc": "§6完美闪避§7或§6完美招架§7以获取技能点",
   "skill.p1nero_ec.ceraunus.desc1": "按下 %s 以向前投掷 %s， 消耗 %d 技能点",
   "skill.p1nero_ec.ceraunus.desc2": "按下 %s 以向前召唤扇形波浪， 消耗 %d 技能点",
@@ -25,6 +26,7 @@
   "skill.p1nero_ec.wrath_of_the_desert.desc3": "按下 %s ，召唤三个沙暴，并召唤远古沙漠碑在四周落下。 消耗 %d 技能点",
   "skill.p1nero_ec.tidal_claw.desc2": "按下 %s 以向前蓄力并发射 %s， 消耗 %d 技能点",
   "skill.p1nero_ec.tidal_claw.desc3": "按下 %s 在周围半径10米内的实体脚下生成 %s，消耗 %d 技能点",
+  "skill.p1nero_ec.the_incinerator.desc1": "按下 %s 以释放灵魂之力, 消耗 %d 技能点",
   "skill.p1nero_ec.the_incinerator.desc2": "按下 %s 以向前蓄力并发射五个火球， 消耗 %d 技能点",
   "skill.p1nero_ec.the_incinerator.desc3": "按下 %s 向前释放炎魂斩，消耗 %d 技能点"
 }

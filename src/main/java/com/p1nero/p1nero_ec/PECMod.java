@@ -3,6 +3,7 @@ package com.p1nero.p1nero_ec;
 import com.github.L_Ender.cataclysm.items.*;
 import com.mojang.logging.LogUtils;
 import com.p1nero.p1nero_ec.client.PECSounds;
+import com.p1nero.p1nero_ec.effect.PECEffects;
 import com.p1nero.p1nero_ec.network.PECPacketHandler;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -22,6 +23,7 @@ public class PECMod {
 
     public PECMod(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
+        PECEffects.REGISTRY.register(bus);
         PECSounds.REGISTRY.register(bus);
         bus.addListener(this::commonSetup);
         context.registerConfig(ModConfig.Type.COMMON, PECConfig.SPEC);

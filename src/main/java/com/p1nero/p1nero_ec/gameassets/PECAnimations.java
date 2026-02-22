@@ -23,6 +23,7 @@ import com.merlin204.avalon.util.AvalonAnimationUtils;
 import com.merlin204.avalon.util.AvalonEventUtils;
 import com.p1nero.invincible.api.animation.types.ScanAttackAnimation;
 import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.effect.PECEffects;
 import com.p1nero.p1nero_ec.utils.PECEffectConditionParticleTrail;
 import com.p1nero.p1nero_ec.utils.PECParticleEffectInvoker;
 import com.p1nero.p1nero_ec.utils.ScyllaEffectInvoker;
@@ -478,45 +479,45 @@ public class PECAnimations {
                     builder.nextAccessor("combat/arc_auto1", accessor -> new AvalonAttackAnimation(0.1F, accessor, Armatures.BIPED, 1F, 1
                                     , createSimplePhase(27, 50, 55, InteractionHand.MAIN_HAND, 0.8F, 1F, Armatures.BIPED.get().toolR, null)
                             )
-                            .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 0.9F)
+                                    .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 0.9F)
                     );
 
             ARC_AUTO2 =
                     builder.nextAccessor("combat/arc_auto2", accessor -> new AvalonAttackAnimation(0.1F, accessor, Armatures.BIPED, 1F, 1
                                     , createSimplePhase(29, 53, 55, InteractionHand.MAIN_HAND, 0.8F, 1F, Armatures.BIPED.get().toolR, null)
                             )
-                            .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 0.9F)
-                            .addEvents(AvalonEventUtils.simpleCameraShake(35, 15, 3, 1, 2),
-                                    AnimationEvent.InTimeEvent.create(0.35F, (entityPatch, self, params) -> {
-                                        LivingEntity caster = entityPatch.getOriginal();
-                                        caster.getLookAngle();
-                                        ScyllaEffectInvoker.createFocusedSpearBeam(caster, 7, 15.0f);
-                                    }, AnimationEvent.Side.BOTH),
-                                    AnimationEvent.InTimeEvent.create(0.1F, (entityPatch, self, params) -> {
-                                        entityPatch.getOriginal().level();
-                                        LivingEntity caster = entityPatch.getOriginal();
-                                        ScyllaEffectInvoker.createForwardLightningStormLine(caster,1.5F,8,8,1);
-                                    }, AnimationEvent.Side.BOTH))
+                                    .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 0.9F)
+                                    .addEvents(AvalonEventUtils.simpleCameraShake(35, 15, 3, 1, 2),
+                                            AnimationEvent.InTimeEvent.create(0.35F, (entityPatch, self, params) -> {
+                                                LivingEntity caster = entityPatch.getOriginal();
+                                                caster.getLookAngle();
+                                                ScyllaEffectInvoker.createFocusedSpearBeam(caster, 7, 15.0f);
+                                            }, AnimationEvent.Side.BOTH),
+                                            AnimationEvent.InTimeEvent.create(0.1F, (entityPatch, self, params) -> {
+                                                entityPatch.getOriginal().level();
+                                                LivingEntity caster = entityPatch.getOriginal();
+                                                ScyllaEffectInvoker.createForwardLightningStormLine(caster, 1.5F, 8, 8, 1);
+                                            }, AnimationEvent.Side.BOTH))
                     );
             ARC_AUTO3 =
                     builder.nextAccessor("combat/arc_auto3", accessor -> new AvalonAttackAnimation(0.1F, accessor, Armatures.BIPED, 1F, 1
                                     , createSimplePhase(27, 54, 60, InteractionHand.MAIN_HAND, 0.8F, 1F, Armatures.BIPED.get().toolR, null)
                             )
                                     .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 0.9F)
-                            .addEvents(AvalonEventUtils.simpleCameraShake(35, 15, 3, 1, 2),
-                                    AnimationEvent.InTimeEvent.create(0.18F, (entityPatch, self, params) -> {
-                                        entityPatch.getOriginal().level();
-                                        LivingEntity caster = entityPatch.getOriginal();
-                                        ScyllaEffectInvoker.createFanSpearBarrage(caster, 3, 5, 100.0f, 15.0f, 4.0f);
-                                    }, AnimationEvent.Side.BOTH),
-                                    AnimationEvent.InTimeEvent.create(0.18F, (entityPatch, self, params) -> {
-                                        entityPatch.getOriginal().level();
-                                        LivingEntity caster = entityPatch.getOriginal();
-                                        ScyllaEffectInvoker.createFanLightningStorms(caster, 3.5, 7, 120);
-                                    }, AnimationEvent.Side.BOTH),
-                                    AnimationEvent.InTimeEvent.create(0.1F, (entityPatch, self, params) -> {
-                                        entityPatch.playSound(SoundEvents.RESPAWN_ANCHOR_DEPLETE.get(), 0, 0);
-                                    }, AnimationEvent.Side.BOTH))
+                                    .addEvents(AvalonEventUtils.simpleCameraShake(35, 15, 3, 1, 2),
+                                            AnimationEvent.InTimeEvent.create(0.18F, (entityPatch, self, params) -> {
+                                                entityPatch.getOriginal().level();
+                                                LivingEntity caster = entityPatch.getOriginal();
+                                                ScyllaEffectInvoker.createFanSpearBarrage(caster, 3, 5, 100.0f, 15.0f, 4.0f);
+                                            }, AnimationEvent.Side.BOTH),
+                                            AnimationEvent.InTimeEvent.create(0.18F, (entityPatch, self, params) -> {
+                                                entityPatch.getOriginal().level();
+                                                LivingEntity caster = entityPatch.getOriginal();
+                                                ScyllaEffectInvoker.createFanLightningStorms(caster, 3.5, 7, 120);
+                                            }, AnimationEvent.Side.BOTH),
+                                            AnimationEvent.InTimeEvent.create(0.1F, (entityPatch, self, params) -> {
+                                                entityPatch.playSound(SoundEvents.RESPAWN_ANCHOR_DEPLETE.get(), 0, 0);
+                                            }, AnimationEvent.Side.BOTH))
 
                     );
 
@@ -531,7 +532,7 @@ public class PECAnimations {
                                     AnimationEvent.InTimeEvent.create(0.35F, (entityPatch, self, params) -> {
                                         entityPatch.getOriginal().level();
                                         LivingEntity caster = entityPatch.getOriginal();
-                                        ScyllaEffectInvoker.createForwardLightningStormLine(caster,2.5F,25,25,1);
+                                        ScyllaEffectInvoker.createForwardLightningStormLine(caster, 2.5F, 25, 25, 1);
                                     }, AnimationEvent.Side.BOTH))
             );
 
@@ -1881,6 +1882,9 @@ public class PECAnimations {
                     .addState(EntityState.ATTACK_RESULT, (damageSource) -> AttackResult.ResultType.BLOCKED)
                     .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1F))
                     .addEvents(AnimationEvent.InTimeEvent.create(2.6F, (entityPatch, self, params) -> {
+                                boolean hasEffect = entityPatch.getOriginal().hasEffect(PECEffects.SOUL_INCINERATOR.get());
+                                ParticleOptions flame = hasEffect ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME;
+                                ParticleOptions lava = hasEffect ? ModParticle.SOUL_LAVA.get() : ParticleTypes.LAVA;
                                 if (!entityPatch.getOriginal().level().isClientSide()) {
                                     LivingEntity attacker = entityPatch.getOriginal();
                                     ServerLevel level = (ServerLevel) attacker.level();
@@ -1918,7 +1922,7 @@ public class PECAnimations {
 
                                             // 核心火焰粒子
                                             level.sendParticles(
-                                                    ParticleTypes.FLAME,
+                                                    flame,
                                                     pos.x, pos.y, pos.z,
                                                     2, // 每组2个粒子
                                                     motion.x * 0.4, motion.y * 0.9, motion.z * 0.4,
@@ -1928,7 +1932,7 @@ public class PECAnimations {
                                             // 50%概率生成附加火星
                                             if (level.random.nextDouble() < 0.5) {
                                                 level.sendParticles(
-                                                        ParticleTypes.LAVA,
+                                                        lava,
                                                         pos.x, pos.y + 0.3, pos.z,
                                                         1,
                                                         motion.x * 1.5, motion.y * 2.0, motion.z * 1.5,
@@ -1948,7 +1952,7 @@ public class PECAnimations {
                                     );
 
                                     level.sendParticles(
-                                            ParticleTypes.FLAME,
+                                            flame,
                                             centerX, centerY + 0.5, centerZ,
                                             80,
                                             2.0, 1.0, 2.0,
@@ -1956,9 +1960,12 @@ public class PECAnimations {
                                     );
                                 }
                             }, AnimationEvent.Side.SERVER),
-                            AnimationEvent.InTimeEvent.create(3.7F, (entitypatch, self, params) -> {
-                                if (entitypatch.getOriginal().level().isClientSide()) {
-                                    LivingEntity attacker = entitypatch.getOriginal();
+                            AnimationEvent.InTimeEvent.create(3.7F, (entityPatch, self, params) -> {
+                                boolean hasEffect = entityPatch.getOriginal().hasEffect(PECEffects.SOUL_INCINERATOR.get());
+                                ParticleOptions flame = hasEffect ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME;
+                                ParticleOptions lava = hasEffect ? ModParticle.SOUL_LAVA.get() : ParticleTypes.LAVA;
+                                if (entityPatch.getOriginal().level().isClientSide()) {
+                                    LivingEntity attacker = entityPatch.getOriginal();
                                     ClientLevel level = (ClientLevel) attacker.level();
 
                                     // ===== 强化参数配置 =====
@@ -1990,7 +1997,7 @@ public class PECAnimations {
 
                                             // 基础火焰粒子
                                             level.addParticle(
-                                                    ParticleTypes.FLAME,
+                                                    flame,
                                                     centerPos.x + xOffset,
                                                     centerPos.y + 0.05f, // 紧贴地面
                                                     centerPos.z + zOffset,
@@ -2002,7 +2009,7 @@ public class PECAnimations {
                                             // 每5个粒子添加一个强化粒子
                                             if (i % 5 == 0) {
                                                 level.addParticle(
-                                                        ParticleTypes.LAVA, // 使用灵魂火增加视觉效果
+                                                        lava, // 使用灵魂火增加视觉效果
                                                         centerPos.x + xOffset,
                                                         centerPos.y + 0.07f,
                                                         centerPos.z + zOffset,
@@ -2035,8 +2042,8 @@ public class PECAnimations {
 
 
                                     // ===== 第一阶段：武器球状粒子 =====
-                                    OpenMatrix4f transformMatrix = entitypatch.getArmature()
-                                            .getBoundTransformFor(entitypatch.getAnimator().getPose(0.0F), Armatures.BIPED.get().handR);
+                                    OpenMatrix4f transformMatrix = entityPatch.getArmature()
+                                            .getBoundTransformFor(entityPatch.getAnimator().getPose(0.0F), Armatures.BIPED.get().handR);
 
                                     transformMatrix.translate(new Vec3f(-0.2F, 0.0F, 0.4F));
                                     OpenMatrix4f.mul(
@@ -2063,7 +2070,7 @@ public class PECAnimations {
 
                                         if (i % 2 == 0) {
                                             level.addParticle(
-                                                    ParticleTypes.LAVA,
+                                                    lava,
                                                     transformMatrix.m30 + attacker.getX(),
                                                     transformMatrix.m31 + attacker.getY() + (float) (Math.random() * 2.9F),
                                                     transformMatrix.m32 + attacker.getZ(),
@@ -2074,8 +2081,8 @@ public class PECAnimations {
 
 
                                     // ===== 双锥形冲击波 =====
-                                    transformMatrix = entitypatch.getArmature()
-                                            .getBoundTransformFor(entitypatch.getAnimator().getPose(0.0F), Armatures.BIPED.get().handR);
+                                    transformMatrix = entityPatch.getArmature()
+                                            .getBoundTransformFor(entityPatch.getAnimator().getPose(0.0F), Armatures.BIPED.get().handR);
                                     OpenMatrix4f.mul(
                                             new OpenMatrix4f().rotate(-(float) Math.toRadians(attacker.yBodyRotO + 180.0F),
                                                     new Vec3f(0.0F, 1.0F, 0.0F)),
@@ -2112,7 +2119,7 @@ public class PECAnimations {
                                             // 添加粒子多样性
                                             ParticleOptions particle;
                                             if (Math.random() < 0.7) {
-                                                particle = ParticleTypes.FLAME;
+                                                particle = flame;
                                             } else if (Math.random() < 0.9) {
                                                 particle = ParticleTypes.SMALL_FLAME;
                                             } else {
@@ -2155,7 +2162,7 @@ public class PECAnimations {
 
                                         // 主火焰粒子
                                         level.addParticle(
-                                                Math.random() < 0.6 ? ParticleTypes.FLAME : ParticleTypes.SMALL_FLAME,
+                                                Math.random() < 0.6 ? flame : ParticleTypes.SMALL_FLAME,
                                                 pos.x, pos.y, pos.z,
                                                 (Math.random() - 0.5) * 0.25,
                                                 0.15 + Math.random() * 0.4,
@@ -2165,7 +2172,7 @@ public class PECAnimations {
                                         // 熔岩斑块
                                         if (i % 4 == 0) {
                                             level.addParticle(
-                                                    ParticleTypes.LAVA,
+                                                    lava,
                                                     pos.x, pos.y + 0.05, pos.z,
                                                     0, 0.03, 0
                                             );
@@ -2196,8 +2203,8 @@ public class PECAnimations {
                             {
                                 entitypatch.playSound(ModSounds.FLAME_BURST.get(), 150, 0, 0);
                             }, AnimationEvent.Side.SERVER),
-                            AvalonEventUtils.particleTrail(56, 166, InteractionHand.MAIN_HAND
-                                    , new Vec3(0, 0, -2.25F), new Vec3(0, 0, -2.6F), 8, 8, ParticleTypes.FLAME, 0.6F)
+                            incineratorParticleTrail(56, 166, InteractionHand.MAIN_HAND
+                                    , new Vec3(0, 0, -2.25F), new Vec3(0, 0, -2.6F), 8, 8, 0.6F)
                             , WeaponTrailGroundSplitter.create(60, 80, InteractionHand.MAIN_HAND
                                     , new Vec3(0, 0, -2.25F), new Vec3(0, 0, -2.3F)
                                     , 1.2f, ParticleTypes.ENCHANT, 1, 3F, 4, 7),
@@ -2234,6 +2241,43 @@ public class PECAnimations {
 
 
         });
+    }
+
+    public static AnimationEvent.InPeriodEvent incineratorParticleTrail(int startFrame, int endFrame, InteractionHand hand, Vec3 startOffset, Vec3 endOffset, float timeInterpolation, int particleCount, float random) {
+        float start = (float)startFrame / 60.0F;
+        float end = (float)endFrame / 60.0F;
+        Joint joint = null;
+        switch (hand) {
+            case MAIN_HAND -> joint = Armatures.BIPED.get().toolR;
+            case OFF_HAND -> joint = Armatures.BIPED.get().toolL;
+        }
+
+        Joint finalJoint = joint;
+        return AnimationEvent.InPeriodEvent.create(start, end, (entityPatch, self, params) -> {
+            boolean hasEffect = entityPatch.getOriginal().hasEffect(PECEffects.SOUL_INCINERATOR.get());
+            ParticleOptions flame = hasEffect ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME;
+            AnimationPlayer player = entityPatch.getAnimator().getPlayerFor(null);
+            float prevElapsedTime = player.getPrevElapsedTime();
+            float elapsedTime = player.getElapsedTime();
+            float step = (elapsedTime - prevElapsedTime) / timeInterpolation;
+            Vec3 trailStartOffset = startOffset;
+            Vec3f trailDirection = new Vec3f((float)(endOffset.x - startOffset.x), (float)(endOffset.y - startOffset.y), (float)(endOffset.z - startOffset.z));
+
+            for(float f = prevElapsedTime; f <= elapsedTime; f += step) {
+                for(int i = 0; i <= particleCount; ++i) {
+                    float ratio = (float)i / (float)particleCount;
+                    Vec3f pointOffset = new Vec3f((float)(trailStartOffset.x + (double)(trailDirection.x * ratio)), (float)(trailStartOffset.y + (double)(trailDirection.y * ratio)), (float)(trailStartOffset.z + (double)(trailDirection.z * ratio)));
+                    double randX = (Math.random() - (double)0.5F) * (double)random;
+                    double randY = (Math.random() - (double)0.5F) * (double)random;
+                    double randZ = (Math.random() - (double)0.5F) * (double)random;
+                    Vec3 worldPos = AvalonAnimationUtils.getJointWorldRawPos(entityPatch, finalJoint, f + step, pointOffset);
+                    if ((entityPatch.getOriginal()).level().isClientSide) {
+                        (entityPatch.getOriginal()).level().addParticle(flame, worldPos.x + randX, worldPos.y + randY, worldPos.z + randZ, 0.0F, 0.0F, 0.0F);
+                    }
+                }
+            }
+
+        }, AnimationEvent.Side.CLIENT);
     }
 
     public static AnimationEvent.InTimeEvent<?> setFullBowUseTime(float time) {
@@ -2296,6 +2340,7 @@ public class PECAnimations {
         return (entityPatch, animation, params) -> {
             entityPatch.playSound(ModSounds.ABYSS_BLAST_ONLY_CHARGE.get(), 4.0F, 1.0F, 1.0F);
             LivingEntity entity = entityPatch.getOriginal();
+            boolean hasSoulEffect = entity.hasEffect(PECEffects.SOUL_INCINERATOR.get());
             if (entityPatch instanceof ServerPlayerPatch serverPlayerPatch) {
                 if (serverPlayerPatch.getTarget() == null) {
                     ServerPlayer serverPlayer = serverPlayerPatch.getOriginal();
@@ -2307,7 +2352,8 @@ public class PECAnimations {
                 }
             }
             entity.level().playLocalSound(entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_PREPARE_SUMMON, entity.getSoundSource(), 5.0F, 1.4F + entity.getRandom().nextFloat() * 0.1F, false);
-            switch (entity.getRandom().nextInt(5)) {
+            int random = hasSoulEffect ? 5 : entity.getRandom().nextInt(5);
+            switch (random) {
                 case 0:
                     shootAbyssFireball(entity, new Vec3(-5.0F, 3.0F, 0.0F), 109 - 45);
                     shootFireball(entity, new Vec3(-2.0F, 3.0F, 0.0F), 0);
@@ -2341,6 +2387,13 @@ public class PECAnimations {
                     shootFireball(entity, new Vec3(-2.0F, 3.0F, 0.0F), 61 - 45);
                     shootFireball(entity, new Vec3(0.0F, 3.0F, 0.0F), 77 - 45);
                     shootFireball(entity, new Vec3(2.0F, 3.0F, 0.0F), 93 - 45);
+                    shootAbyssFireball(entity, new Vec3(5.0F, 3.0F, 0.0F), 109 - 45);
+                    break;
+                case 5:
+                    shootAbyssFireball(entity, new Vec3(-5.0F, 3.0F, 0.0F), 0);
+                    shootAbyssFireball(entity, new Vec3(-2.0F, 3.0F, 0.0F), 61 - 45);
+                    shootAbyssFireball(entity, new Vec3(0.0F, 3.0F, 0.0F), 77 - 45);
+                    shootAbyssFireball(entity, new Vec3(2.0F, 3.0F, 0.0F), 93 - 45);
                     shootAbyssFireball(entity, new Vec3(5.0F, 3.0F, 0.0F), 109 - 45);
             }
         };
@@ -3123,10 +3176,10 @@ public class PECAnimations {
 
 
     public static final AnimationEvent.E4<Vec3f, Joint, Double, Float> FRACTURE_GROUNDSLAM_NOSMOKE = (entitypatch, animation, params) -> {
-        Vec3 position = ((LivingEntity)entitypatch.getOriginal()).position();
-        OpenMatrix4f modelTransform = entitypatch.getArmature().getBoundTransformFor(((StaticAnimation)animation.get()).getPoseByTime(entitypatch, (Float)params.fourth(), 1.0F), (Joint)params.second()).mulFront(OpenMatrix4f.createTranslation((float)position.x, (float)position.y, (float)position.z).mulBack(OpenMatrix4f.createRotatorDeg(180.0F, Vec3f.Y_AXIS).mulBack(entitypatch.getModelMatrix(1.0F))));
-        Level level = ((LivingEntity)entitypatch.getOriginal()).level();
-        Vec3 weaponEdge = OpenMatrix4f.transform(modelTransform, ((Vec3f)params.first()).toDoubleVector());
+        Vec3 position = ((LivingEntity) entitypatch.getOriginal()).position();
+        OpenMatrix4f modelTransform = entitypatch.getArmature().getBoundTransformFor(((StaticAnimation) animation.get()).getPoseByTime(entitypatch, (Float) params.fourth(), 1.0F), (Joint) params.second()).mulFront(OpenMatrix4f.createTranslation((float) position.x, (float) position.y, (float) position.z).mulBack(OpenMatrix4f.createRotatorDeg(180.0F, Vec3f.Y_AXIS).mulBack(entitypatch.getModelMatrix(1.0F))));
+        Level level = ((LivingEntity) entitypatch.getOriginal()).level();
+        Vec3 weaponEdge = OpenMatrix4f.transform(modelTransform, ((Vec3f) params.first()).toDoubleVector());
         BlockHitResult hitResult = level.clip(new ClipContext(position.add(0.0, 0.1, 0.0), weaponEdge, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entitypatch.getOriginal()));
         Vec3 slamStartPos;
         if (hitResult.getType() == HitResult.Type.BLOCK) {
@@ -3136,18 +3189,18 @@ public class PECAnimations {
                 collidePos = collidePos.below();
             }
 
-            slamStartPos = new Vec3((double)collidePos.getX(), (double)collidePos.getY(), (double)collidePos.getZ());
+            slamStartPos = new Vec3((double) collidePos.getX(), (double) collidePos.getY(), (double) collidePos.getZ());
         } else {
             slamStartPos = weaponEdge.subtract(0.0, 1.0, 0.0);
         }
 
-        LevelUtil.circleSlamFracture((LivingEntity)entitypatch.getOriginal(), level, slamStartPos, (Double)params.third(), false, true);
+        LevelUtil.circleSlamFracture((LivingEntity) entitypatch.getOriginal(), level, slamStartPos, (Double) params.third(), false, true);
     };
 
     public static final AnimationEvent.E4<Vec3f, Joint, Double, Float> FRACTURE_TARGET_GROUNDSLAM_NOSMOKE = (entitypatch, animation, params) -> {
         LivingEntity target = entitypatch.getTarget();
         if (target != null) {
-            Vec3 position = ((LivingEntity)entitypatch.getTarget()).position();
+            Vec3 position = ((LivingEntity) entitypatch.getTarget()).position();
             OpenMatrix4f modelTransform = entitypatch.getArmature().getBoundTransformFor(((StaticAnimation) animation.get()).getPoseByTime(entitypatch, (Float) params.fourth(), 1.0F), (Joint) params.second()).mulFront(OpenMatrix4f.createTranslation((float) position.x, (float) position.y, (float) position.z).mulBack(OpenMatrix4f.createRotatorDeg(180.0F, Vec3f.Y_AXIS).mulBack(entitypatch.getModelMatrix(1.0F))));
             Level level = ((LivingEntity) entitypatch.getOriginal()).level();
             Vec3 weaponEdge = OpenMatrix4f.transform(modelTransform, ((Vec3f) params.first()).toDoubleVector());

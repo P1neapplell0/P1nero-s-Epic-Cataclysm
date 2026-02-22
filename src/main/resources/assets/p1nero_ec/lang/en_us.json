@@ -4,6 +4,7 @@
   "key.p1nero_ec.skill_2": "Skill 2",
   "key.p1nero_ec.skill_3": "Skill 3",
   "info.p1nero_ec.skill_point_lack": "%d skill points are required",
+  "info.p1nero_ec.need_target": "§4No Target!",
   "skill.p1nero_ec.desc": "§6Perfect Dodge§7 or §6Perfect Parry§7 to gain Skill Points",
   "skill.p1nero_ec.ceraunus.desc1": "Press %s to throw %s forward, consuming %d Skill Points",
   "skill.p1nero_ec.ceraunus.desc2": "Press %s to summon a sector-shaped wave forward, consuming %d Skill Points",
@@ -25,6 +26,7 @@
   "skill.p1nero_ec.wrath_of_the_desert.desc3": "Press %s to summon 3 sandstorm, then summon Ancient Desert Steles to crash down around you, consuming %d Skill Points",
   "skill.p1nero_ec.tidal_claw.desc2": "Press %s to charge forward and launch %s, consuming %d skill points",
   "skill.p1nero_ec.tidal_claw.desc3": "Press %s to create %s at the feet of entities within a 10-meter radius, consuming %d skill points",
+  "skill.p1nero_ec.the_incinerator.desc1": "Press %s to release the power of soul, consumes %d Skill Points",
   "skill.p1nero_ec.the_incinerator.desc2": "Press %s to charge up and fire five fireballs forward, consumes %d Skill Points",
   "skill.p1nero_ec.the_incinerator.desc3": "Press %s to release the [Flame Soul Slash] forward, consumes %d Skill Points"
 }
