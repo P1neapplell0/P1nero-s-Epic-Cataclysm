@@ -2421,7 +2421,7 @@ public class PECAnimations {
         double d2 = shotAt.z;
         float f = Mth.sqrt((float) (d0 * d0 + d2 * d2)) * 0.35F;
         shot.shoot(d0, d1 + (double) f, d2, 0.25F, 3.0F);
-        shot.setUp(timer + 1);
+        shot.setUp(timer + 21);
 
         entity.level().addFreshEntity(shot);
     }
