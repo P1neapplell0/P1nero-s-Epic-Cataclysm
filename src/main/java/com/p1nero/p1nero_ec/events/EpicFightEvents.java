@@ -1,7 +1,7 @@
 package com.p1nero.p1nero_ec.events;
 
 import com.github.L_Ender.cataclysm.init.ModEntities;
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.capability.entitypatch.DrownedHostPatch;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,7 +17,7 @@ import yesman.epicfight.world.capabilities.item.CapabilityItem.WeaponCategories;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = PECMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EpicFightEvents {
 
     @SubscribeEvent

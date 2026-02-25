@@ -1,13 +1,13 @@
 package com.p1nero.p1nero_ec.gameassets;
 
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.skills.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.skill.Skill;
 
-@Mod.EventBusSubscriber(modid = PECMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PECSkills {
 
     public static Skill STEP;
@@ -23,7 +23,7 @@ public class PECSkills {
 
     @SubscribeEvent
     public static void buildSkills(SkillBuildEvent event) {
-        SkillBuildEvent.ModRegistryWorker registryWorker = event.createRegistryWorker(PECMod.MOD_ID);
+        SkillBuildEvent.ModRegistryWorker registryWorker = event.createRegistryWorker(PEpicCataclysmMod.MOD_ID);
 //        STEP = registryWorker.build("step", DefaultDodgeSkill::new, DefaultDodgeSkill.createDodgeBuilder()
 //                .setAnimations(PECAnimations.STEP_F, PECAnimations.STEP_B, PECAnimations.STEP_L, PECAnimations.STEP_R));
 

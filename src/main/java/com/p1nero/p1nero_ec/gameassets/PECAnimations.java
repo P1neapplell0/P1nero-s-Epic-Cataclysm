@@ -22,7 +22,7 @@ import com.merlin204.avalon.particle.AvalonParticles;
 import com.merlin204.avalon.util.AvalonAnimationUtils;
 import com.merlin204.avalon.util.AvalonEventUtils;
 import com.p1nero.invincible.api.animation.types.ScanAttackAnimation;
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.effect.PECEffects;
 import com.p1nero.p1nero_ec.utils.PECEffectConditionParticleTrail;
 import com.p1nero.p1nero_ec.utils.PECParticleEffectInvoker;
@@ -103,7 +103,7 @@ import static com.p1nero.p1nero_ec.utils.ScyllaEffectInvoker.createDirectionalLi
 import static com.p1nero.p1nero_ec.utils.VoidEffectInvoker.createForwardVoidRuneCluster;
 import static java.lang.Integer.MAX_VALUE;
 
-@Mod.EventBusSubscriber(modid = PECMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PECAnimations {
     public static final Collider CERAUNUS_SKILL = new OBBCollider(1.7, 1.7, 1.7, 0.0, 0.0, 0.0);
     public static final Collider ASTRAPE_SKILL = new OBBCollider(1, 1, 1.4, 0.0, 1.0, -0.5);
@@ -159,7 +159,7 @@ public class PECAnimations {
 
     @SubscribeEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
-        event.newBuilder(PECMod.MOD_ID, (builder) -> {
+        event.newBuilder(PEpicCataclysmMod.MOD_ID, (builder) -> {
 
             CLAW_SHOOT = builder.nextAccessor("living/claw_shoot", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
 

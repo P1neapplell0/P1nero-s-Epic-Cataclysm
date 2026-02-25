@@ -1,6 +1,6 @@
 package com.p1nero.p1nero_ec.client;
 
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.capability.PECPlayer;
 import com.p1nero.p1nero_ec.skills.PECWeaponInnateSkillBase;
 import net.minecraft.client.KeyMapping;
@@ -22,15 +22,15 @@ import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.entity.eventlistener.SkillCastEvent;
 
-@Mod.EventBusSubscriber(modid = PECMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
+@Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class KeyMappings {
 
-    public static final KeyMapping SKILL_1 = new KeyMapping(buildKey("skill_1"), GLFW.GLFW_KEY_1, "key.categories." + PECMod.MOD_ID);
-    public static final KeyMapping SKILL_2 = new KeyMapping(buildKey("skill_2"), GLFW.GLFW_KEY_2, "key.categories." + PECMod.MOD_ID);
-    public static final KeyMapping SKILL_3 = new KeyMapping(buildKey("skill_3"), GLFW.GLFW_KEY_3, "key.categories." + PECMod.MOD_ID);
+    public static final KeyMapping SKILL_1 = new KeyMapping(buildKey("skill_1"), GLFW.GLFW_KEY_1, "key.categories." + PEpicCataclysmMod.MOD_ID);
+    public static final KeyMapping SKILL_2 = new KeyMapping(buildKey("skill_2"), GLFW.GLFW_KEY_2, "key.categories." + PEpicCataclysmMod.MOD_ID);
+    public static final KeyMapping SKILL_3 = new KeyMapping(buildKey("skill_3"), GLFW.GLFW_KEY_3, "key.categories." + PEpicCataclysmMod.MOD_ID);
 
     public static String buildKey(String name) {
-        return "key." + PECMod.MOD_ID + "." + name;
+        return "key." + PEpicCataclysmMod.MOD_ID + "." + name;
     }
 
     @SubscribeEvent
@@ -40,7 +40,7 @@ public class KeyMappings {
         event.register(SKILL_3);
     }
 
-    @Mod.EventBusSubscriber(modid = PECMod.MOD_ID, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID, value = Dist.CLIENT)
     public static class KeyPressHandler {
 
         public static void handleKeyPress() {

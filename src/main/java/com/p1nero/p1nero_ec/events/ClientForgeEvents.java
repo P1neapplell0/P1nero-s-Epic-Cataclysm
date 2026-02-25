@@ -2,7 +2,7 @@ package com.p1nero.p1nero_ec.events;
 
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.p1nero_ec.capability.PECCapabilityProvider;
 import com.p1nero.p1nero_ec.capability.PECPlayer;
@@ -23,7 +23,7 @@ import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.main.EpicFightMod;
 
-@Mod.EventBusSubscriber(modid = PECMod.MOD_ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID, value = Dist.CLIENT)
 public class ClientForgeEvents {
 
     @SubscribeEvent

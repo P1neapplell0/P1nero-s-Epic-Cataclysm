@@ -1,8 +1,11 @@
 package com.p1nero.p1nero_ec.skills;
 
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
+import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.p1nero_ec.client.KeyMappings;
 import com.p1nero.p1nero_ec.gameassets.PECAnimations;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -16,6 +19,15 @@ import java.util.List;
 public class TheIncineratorInnateSkill extends PECWeaponInnateSkillBase {
     public TheIncineratorInnateSkill(SkillBuilder<? extends Skill> builder) {
         super(builder);
+    }
+
+    @Override
+    public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
+        if(PECDataManager.THE_INCINERATOR_LOCK.get(container.getExecutor().getOriginal())) {
+            container.getExecutor().getOriginal().displayClientMessage(PEpicCataclysmMod.theIncineratorLock, true);
+            return;
+        }
+        super.executeOnServer(container, args);
     }
 
     @Override

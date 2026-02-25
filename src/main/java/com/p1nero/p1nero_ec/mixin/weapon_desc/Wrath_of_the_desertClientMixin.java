@@ -1,9 +1,12 @@
-package com.p1nero.p1nero_ec.mixin;
+package com.p1nero.p1nero_ec.mixin.weapon_desc;
 
 import com.github.L_Ender.cataclysm.items.Wrath_of_the_desert;
 import com.p1nero.invincible.api.animation.types.ScanAttackAnimation;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
+import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.p1nero_ec.client.KeyMappings;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -78,11 +81,15 @@ public abstract class Wrath_of_the_desertClientMixin extends Item {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)
     public void pec$appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn, CallbackInfo ci) {
+        ci.cancel();
+        if(PECDataManager.WRATH_OF_THE_DESERT_LOCK.get(Minecraft.getInstance().player)) {
+            tooltip.add(PEpicCataclysmMod.wrathOfTheDesertLock);
+            return;
+        }
         tooltip.add(Component.translatable("skill.p1nero_ec.desc").withStyle(ChatFormatting.GRAY));
         tooltip.add(Component.translatable("skill.p1nero_ec.wrath_of_the_desert.desc1", KeyMappings.SKILL_1.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD), 1).withStyle(ChatFormatting.YELLOW));
         tooltip.add(Component.translatable("skill.p1nero_ec.wrath_of_the_desert.desc2", KeyMappings.SKILL_2.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD), 2).withStyle(ChatFormatting.YELLOW));
         tooltip.add(Component.translatable("skill.p1nero_ec.wrath_of_the_desert.desc3", KeyMappings.SKILL_3.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD), 4).withStyle(ChatFormatting.YELLOW));
-        ci.cancel();
     }
 
 }

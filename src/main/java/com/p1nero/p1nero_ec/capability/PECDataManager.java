@@ -16,60 +16,32 @@ import java.util.Set;
 
 public class PECDataManager {
     private final static Set<String> EXISTING_ID = new HashSet<>();
-    public static BoolData firstJoint = new BoolData("first_joint", false);
     public static DoubleData skillPoint = new DoubleData("skill_point", 0);
     public static BoolData isLockOn = new BoolData("is_lock_on", false);
     //能否使用技能
-    public static BoolData TIDAL_CLAW_2 = new BoolData("tidal_claw_2", false);
-    public static BoolData TIDAL_CLAW_3 = new BoolData("tidal_claw_3", false);
-    public static BoolData CERAUNUS_1 = new BoolData("ceraunus_1", false);
-    public static BoolData CERAUNUS_2 = new BoolData("ceraunus_2", false);
-    public static BoolData CERAUNUS_3 = new BoolData("ceraunus_3", false);
-    public static BoolData INFERNAL_FORGE_1 = new BoolData("infernal_forge_1", false);
-    public static BoolData INFERNAL_FORGE_2 = new BoolData("infernal_forge_2", false);
-    public static BoolData INFERNAL_FORGE_3 = new BoolData("infernal_forge_3", false);
-    public static BoolData GAUNTLET_OF_GUARD_2 = new BoolData("gauntlet_of_guard_2", false);
-    public static BoolData GAUNTLET_OF_GUARD_3 = new BoolData("gauntlet_of_guard_3", false);
-    public static BoolData DUAL_ANNIHILATOR_1 = new BoolData("dual_annihilator_1", false);
-    public static BoolData DUAL_ANNIHILATOR_2 = new BoolData("dual_annihilator_2", false);
-    public static BoolData SOUL_RENDER_1 = new BoolData("soul_render_1", false);
-    public static BoolData SOUL_RENDER_2 = new BoolData("soul_render_2", false);
-    public static BoolData SOUL_RENDER_3 = new BoolData("soul_render_3", false);
-    public static BoolData ASTRAPE_1 = new BoolData("astrape_1", false);
-    public static BoolData ASTRAPE_2 = new BoolData("astrape_2", false);
-    public static BoolData THE_INCINERATOR_2 = new BoolData("the_incinerator_2", false);
-    public static BoolData THE_INCINERATOR_3 = new BoolData("the_incinerator_3", false);
-    public static BoolData WRATH_OF_THE_DESERT_1 = new BoolData("wrath_of_the_desert_1", false);
-    public static BoolData WRATH_OF_THE_DESERT_2 = new BoolData("wrath_of_the_desert_2", false);
-    public static BoolData WRATH_OF_THE_DESERT_3 = new BoolData("wrath_of_the_desert_3", false);
+    public static BoolData TIDAL_CLAW_LOCK = new BoolData("tidal_claw_lock", false);
+    public static BoolData CERAUNUS_LOCK = new BoolData("ceraunus_lock", false);
+    public static BoolData INFERNAL_FORGE_LOCK = new BoolData("infernal_forge_lock", false);
+    public static BoolData GAUNTLET_OF_GUARD_LOCK = new BoolData("gauntlet_of_guard_lock", false);
+    public static BoolData DUAL_ANNIHILATOR_LOCK = new BoolData("dual_annihilator_lock", false);
+    public static BoolData SOUL_RENDER_LOCK = new BoolData("soul_render_lock", false);
+    public static BoolData ASTRAPE_LOCK = new BoolData("astrape_lock", false);
+    public static BoolData THE_INCINERATOR_LOCK = new BoolData("the_incinerator_lock", false);
+    public static BoolData WRATH_OF_THE_DESERT_LOCK = new BoolData("wrath_of_the_desert_lock", false);
 
     /**
      * 初始化玩家是否可以使用武器技能，用于逐步解锁
      */
-    public static void resetAll(ServerPlayer player, boolean canUse) {
-        TIDAL_CLAW_2.put(player, canUse);
-        TIDAL_CLAW_2.put(player, canUse);
-        TIDAL_CLAW_3.put(player, canUse);
-        CERAUNUS_1.put(player, canUse);
-        CERAUNUS_2.put(player, canUse);
-        CERAUNUS_3.put(player, canUse);
-        INFERNAL_FORGE_1.put(player, canUse);
-        INFERNAL_FORGE_2.put(player, canUse);
-        INFERNAL_FORGE_3.put(player, canUse);
-        GAUNTLET_OF_GUARD_2.put(player, canUse);
-        GAUNTLET_OF_GUARD_3.put(player, canUse);
-        DUAL_ANNIHILATOR_1.put(player, canUse);
-        DUAL_ANNIHILATOR_2.put(player, canUse);
-        SOUL_RENDER_1.put(player, canUse);
-        SOUL_RENDER_2.put(player, canUse);
-        SOUL_RENDER_3.put(player, canUse);
-        ASTRAPE_1.put(player, canUse);
-        ASTRAPE_2.put(player, canUse);
-        THE_INCINERATOR_2.put(player, canUse);
-        THE_INCINERATOR_3.put(player, canUse);
-        WRATH_OF_THE_DESERT_1.put(player, canUse);
-        WRATH_OF_THE_DESERT_2.put(player, canUse);
-        WRATH_OF_THE_DESERT_3.put(player, canUse);
+    public static void resetAll(ServerPlayer player, boolean locked) {
+        TIDAL_CLAW_LOCK.put(player, locked);
+        CERAUNUS_LOCK.put(player, locked);
+        INFERNAL_FORGE_LOCK.put(player, locked);
+        GAUNTLET_OF_GUARD_LOCK.put(player, locked);
+        DUAL_ANNIHILATOR_LOCK.put(player, locked);
+        SOUL_RENDER_LOCK.put(player, locked);
+        ASTRAPE_LOCK.put(player, locked);
+        THE_INCINERATOR_LOCK.put(player, locked);
+        WRATH_OF_THE_DESERT_LOCK.put(player, locked);
     }
 
     public static void putData(Player player, String key, double value) {

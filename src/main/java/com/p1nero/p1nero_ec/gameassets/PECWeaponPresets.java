@@ -2,7 +2,7 @@ package com.p1nero.p1nero_ec.gameassets;
 
 import com.hm.efn.gameasset.EFNAnimations;
 import com.hm.efn.gameasset.animations.*;
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.capability.item.CursedBowCapability;
 import com.p1nero.p1nero_ec.capability.item.TidalClawCapability;
 import com.p1nero.p1nero_ec.capability.item.WrathOfTheDesertCapability;
@@ -25,7 +25,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCapability;
 
 import java.util.function.Function;
 
-@Mod.EventBusSubscriber(modid = PECMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PECWeaponPresets {
     public static final Collider BOW_DASH = new MultiOBBCollider(2, 1, 1.5, 1, 0, 0, 0);
     public static final Collider BOW_ELBOW = new MultiOBBCollider(2, 1, 1, 1, 0, 1, 0);
@@ -235,15 +235,15 @@ public class PECWeaponPresets {
 
     @SubscribeEvent
     public static void register(WeaponCapabilityPresetRegistryEvent event) {
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "tidal_claw"), TIDAL_CLAW);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "ceraunus"), CERAUNUS);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "infernal_forge"), INFERNAL_FORGE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "gauntlet_of_guard"), GAUNTLET_OF_GUARD);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "dual_annihilator"), DUAL_ANNIHILATOR);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "soul_render"), SOUL_RENDER);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "astrape"), ASTRAPE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "the_incinerator"), THE_INCINERATOR);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "wrath_of_the_desert"), WRATH_OF_THE_DESERT);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "cursed_bow"), CURSED_BOW);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "tidal_claw"), TIDAL_CLAW);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "ceraunus"), CERAUNUS);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "infernal_forge"), INFERNAL_FORGE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "gauntlet_of_guard"), GAUNTLET_OF_GUARD);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "dual_annihilator"), DUAL_ANNIHILATOR);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "soul_render"), SOUL_RENDER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "astrape"), ASTRAPE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "the_incinerator"), THE_INCINERATOR);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "wrath_of_the_desert"), WRATH_OF_THE_DESERT);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "cursed_bow"), CURSED_BOW);
     }
 }

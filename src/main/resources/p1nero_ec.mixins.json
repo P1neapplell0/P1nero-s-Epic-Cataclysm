@@ -22,20 +22,20 @@
     "TidalClawsMixin"
   ],
   "client": [
-    "AstrapeClientMixin",
-    "CeraunusClientMixin",
+    "weapon_desc.AstrapeClientMixin",
+    "weapon_desc.CeraunusClientMixin",
     "CursedBowClientMixin",
-    "GauntletOfGuardClientMixin",
-    "InfernalForgeClientMixin",
+    "weapon_desc.GauntletOfGuardClientMixin",
+    "weapon_desc.InfernalForgeClientMixin",
     "MixinMinecraft",
     "Player_Ceraunus_RendererMixin",
-    "Soul_RenderClientMixin",
-    "TheAnnihilatorClientMixin",
-    "TheIncineratorClientMixin",
-    "TidalClawClientMixin",
+    "weapon_desc.Soul_RenderClientMixin",
+    "weapon_desc.TheAnnihilatorClientMixin",
+    "weapon_desc.TheIncineratorClientMixin",
+    "weapon_desc.TidalClawClientMixin",
     "TidalHookRendererMixin",
     "TidalTentacleRendererMixin",
-    "Wrath_of_the_desertClientMixin"
+    "weapon_desc.Wrath_of_the_desertClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1

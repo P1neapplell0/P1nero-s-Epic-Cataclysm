@@ -2,7 +2,7 @@ package com.p1nero.p1nero_ec.client.gui;
 
 import com.mojang.blaze3d.platform.Window;
 import com.p1nero.p1nero_ec.PECConfig;
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.capability.PECPlayer;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
@@ -17,9 +17,9 @@ import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class CustomGuiRenderer {
-    private static final ResourceLocation BG_TEXTURE = ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "textures/gui/skill_point/bg.png");
-    private static final ResourceLocation IN_OUT_TEXTURE = ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "textures/gui/skill_point/in_out.png");
-    private static final ResourceLocation LOOP_TEXTURE = ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "textures/gui/skill_point/loop.png");
+    private static final ResourceLocation BG_TEXTURE = ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "textures/gui/skill_point/bg.png");
+    private static final ResourceLocation IN_OUT_TEXTURE = ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "textures/gui/skill_point/in_out.png");
+    private static final ResourceLocation LOOP_TEXTURE = ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "textures/gui/skill_point/loop.png");
     private static final List<SkillIcon> SKILL_ICONS = new ArrayList<>();
     private static final int MAX_INTERVAL = 1;
     private static int interval = MAX_INTERVAL;

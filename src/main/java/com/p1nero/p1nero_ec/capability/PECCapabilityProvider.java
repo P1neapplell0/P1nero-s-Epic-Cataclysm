@@ -1,6 +1,6 @@
 package com.p1nero.p1nero_ec.capability;
 
-import com.p1nero.p1nero_ec.PECMod;
+import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Mod.EventBusSubscriber(modid = PECMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = PEpicCataclysmMod.MOD_ID)
 public class PECCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
     public static Capability<PECPlayer> PEC_PLAYER = CapabilityManager.get(new CapabilityToken<>() {
@@ -32,7 +32,7 @@ public class PECCapabilityProvider implements ICapabilityProvider, INBTSerializa
     public static void attachEntityCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player player) {
             if (!player.getCapability(PECCapabilityProvider.PEC_PLAYER).isPresent()) {
-                event.addCapability(ResourceLocation.fromNamespaceAndPath(PECMod.MOD_ID, "pec_player"), new PECCapabilityProvider());
+                event.addCapability(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "pec_player"), new PECCapabilityProvider());
             }
         }
     }
