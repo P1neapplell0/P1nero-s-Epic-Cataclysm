@@ -28,7 +28,6 @@ import com.p1nero.p1nero_ec.utils.PECEffectConditionParticleTrail;
 import com.p1nero.p1nero_ec.utils.PECParticleEffectInvoker;
 import com.p1nero.p1nero_ec.utils.ScyllaEffectInvoker;
 import com.p1nero.p1nero_ec.utils.VoidEffectInvoker;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -1966,7 +1965,7 @@ public class PECAnimations {
                                 ParticleOptions lava = hasEffect ? ModParticle.SOUL_LAVA.get() : ParticleTypes.LAVA;
                                 if (entityPatch.getOriginal().level().isClientSide()) {
                                     LivingEntity attacker = entityPatch.getOriginal();
-                                    ClientLevel level = (ClientLevel) attacker.level();
+                                    Level level = attacker.level();
 
                                     // ===== 强化参数配置 =====
                                     float intensity = 2.5f; // 增强强度系数
