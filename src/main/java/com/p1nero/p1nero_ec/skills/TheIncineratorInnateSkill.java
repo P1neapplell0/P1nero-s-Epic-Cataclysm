@@ -23,10 +23,6 @@ public class TheIncineratorInnateSkill extends PECWeaponInnateSkillBase {
 
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
-        if(PECDataManager.THE_INCINERATOR_LOCK.get(container.getExecutor().getOriginal())) {
-            container.getExecutor().getOriginal().displayClientMessage(PEpicCataclysmMod.theIncineratorLock, true);
-            return;
-        }
         super.executeOnServer(container, args);
     }
 
@@ -42,6 +38,10 @@ public class TheIncineratorInnateSkill extends PECWeaponInnateSkillBase {
 
     @Override
     protected void tryExecuteSkill2(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
+        if(PECDataManager.THE_INCINERATOR_LOCK.get(container.getExecutor().getOriginal())) {
+            container.getExecutor().getOriginal().displayClientMessage(PEpicCataclysmMod.theIncineratorLock, true);
+            return;
+        }
         if(serverPlayerPatch.getTarget() == null) {
             serverPlayerPatch.getOriginal().displayClientMessage(Component.translatable("info.p1nero_ec.need_target"), true);
             return;
@@ -52,6 +52,15 @@ public class TheIncineratorInnateSkill extends PECWeaponInnateSkillBase {
     @Override
     public void executeSkill2(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
         serverPlayerPatch.playAnimationSynchronized(PECAnimations.THE_INCINERATOR_SKILL2, 0.15F);
+    }
+
+    @Override
+    protected void tryExecuteSkill3(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
+        if(PECDataManager.THE_INCINERATOR_LOCK.get(container.getExecutor().getOriginal())) {
+            container.getExecutor().getOriginal().displayClientMessage(PEpicCataclysmMod.theIncineratorLock, true);
+            return;
+        }
+        super.tryExecuteSkill3(serverPlayerPatch, container);
     }
 
     @Override

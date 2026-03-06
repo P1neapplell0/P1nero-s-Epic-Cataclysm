@@ -17,10 +17,6 @@ public class SoulRenderInnateSkill extends PECWeaponInnateSkillBase {
 
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
-        if(PECDataManager.SOUL_RENDER_LOCK.get(container.getExecutor().getOriginal())) {
-            container.getExecutor().getOriginal().displayClientMessage(PEpicCataclysmMod.soulRenderLock, true);
-            return;
-        }
         super.executeOnServer(container, args);
     }
 
@@ -39,8 +35,26 @@ public class SoulRenderInnateSkill extends PECWeaponInnateSkillBase {
     }
 
     @Override
+    protected void tryExecuteSkill2(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
+        if(PECDataManager.SOUL_RENDER_LOCK.get(container.getExecutor().getOriginal())) {
+            container.getExecutor().getOriginal().displayClientMessage(PEpicCataclysmMod.soulRenderLock, true);
+            return;
+        }
+        super.tryExecuteSkill2(serverPlayerPatch, container);
+    }
+
+    @Override
     public void executeSkill2(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
         serverPlayerPatch.playAnimationSynchronized(PECAnimations.SOUL_RENDER_SKILL2, 0.15F);
+    }
+
+    @Override
+    protected void tryExecuteSkill3(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
+        if(PECDataManager.SOUL_RENDER_LOCK.get(container.getExecutor().getOriginal())) {
+            container.getExecutor().getOriginal().displayClientMessage(PEpicCataclysmMod.soulRenderLock, true);
+            return;
+        }
+        super.tryExecuteSkill3(serverPlayerPatch, container);
     }
 
     @Override

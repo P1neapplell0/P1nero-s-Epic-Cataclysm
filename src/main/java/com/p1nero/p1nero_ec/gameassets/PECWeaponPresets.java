@@ -163,6 +163,7 @@ public class PECWeaponPresets {
                             EFNLanceAnimations.NF_MEEN_AUTO1,
                             EFNLanceAnimations.NF_MEEN_AUTO2,
                             EFNLanceAnimations.NF_MEEN_AUTO3,
+                            EFNLanceAnimations.NF_MEEN_AUTO4,
                             Animations.SPEAR_DASH,
                             EFNLanceAnimations.NF_MEEN_AIRSLASH)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD)
