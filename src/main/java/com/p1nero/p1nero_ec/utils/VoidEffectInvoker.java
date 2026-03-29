@@ -1,6 +1,6 @@
 package com.p1nero.p1nero_ec.utils;
 
-import com.github.L_Ender.cataclysm.config.CMConfig;
+import com.github.L_Ender.cataclysm.config.CMCommonConfig;
 import com.github.L_Ender.cataclysm.entity.effect.ScreenShake_Entity;
 import com.github.L_Ender.cataclysm.entity.effect.Void_Vortex_Entity;
 import com.github.L_Ender.cataclysm.entity.projectile.Void_Howitzer_Entity;
@@ -147,7 +147,7 @@ public class VoidEffectInvoker {
             double z = centerZ + radius * Mth.sin(angle);
             int delay = baseDelay + i % 3;
 
-            spawnVoidRuneOnGround(world, x, z, minY, maxY, angle, delay, (float) CMConfig.Voidrunedamage, caster);
+            spawnVoidRuneOnGround(world, x, z, minY, maxY, angle, delay, (float) CMCommonConfig.VoidCore.runeDamage, caster);
         }
     }
 
@@ -199,7 +199,7 @@ public class VoidEffectInvoker {
                         caster.getY() - 1, caster.getY() + 2,
                         0,
                         delay,
-                        (float) CMConfig.Voidrunedamage * 0.6f,
+                        (float) CMCommonConfig.VoidCore.runeDamage * 0.6f,
                         caster
                 );
             }
@@ -246,7 +246,7 @@ public class VoidEffectInvoker {
                 double z = centerZ + radius * Mth.sin(angle);
                 int delay = ring * 2;
 
-                spawnVoidRuneOnGround(world, x, z, centerY - 3, centerY + 1, angle, delay, (float) CMConfig.Voidrunedamage, caster);
+                spawnVoidRuneOnGround(world, x, z, centerY - 3, centerY + 1, angle, delay, (float) CMCommonConfig.VoidCore.runeDamage, caster);
             }
         }
     }
@@ -255,7 +255,7 @@ public class VoidEffectInvoker {
                                                     LivingEntity caster, float yaw) {
         if (world.isClientSide()) return;
 
-        float damage = (float) CMConfig.Voidrunedamage;
+        float damage = (float) CMCommonConfig.VoidCore.runeDamage;
         Vec3 lookVec = caster.getLookAngle();
 
         int clawCount = 3;

@@ -1,9 +1,11 @@
 package com.p1nero.p1nero_ec.gameassets;
 
 import com.github.L_Ender.cataclysm.capabilities.RenderRushCapability;
+import com.github.L_Ender.cataclysm.client.particle.Options.RingParticleOptions;
+import com.github.L_Ender.cataclysm.client.particle.Options.RoarParticleOptions;
 import com.github.L_Ender.cataclysm.client.particle.RingParticle;
 import com.github.L_Ender.cataclysm.client.particle.RoarParticle;
-import com.github.L_Ender.cataclysm.config.CMConfig;
+import com.github.L_Ender.cataclysm.config.CMCommonConfig;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.Abyss_Blast_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.Abyss_Blast_Portal_Entity;
 import com.github.L_Ender.cataclysm.entity.effect.*;
@@ -603,7 +605,7 @@ public class PECAnimations {
                                         double rad = Math.toRadians(angle);
                                         double dx = -Math.sin(rad);
                                         double dz = Math.cos(rad);
-                                        Wave_Entity WaveEntity = new Wave_Entity(level, attacker, 60, (float) CMConfig.CeraunusWaveDamage);
+                                        Wave_Entity WaveEntity = new Wave_Entity(level, attacker, 60, (float) CMCommonConfig.Ceraunus.waveDamage);
                                         WaveEntity.setPos(spawnX, spawnY, spawnZ);
                                         WaveEntity.setState(1);
                                         WaveEntity.setYRot(-((float) (Mth.atan2(dx, dz) * (180D / Math.PI))));
@@ -701,7 +703,7 @@ public class PECAnimations {
                                         double rad = Math.toRadians(angle);
                                         double dx = -Math.sin(rad);
                                         double dz = Math.cos(rad);
-                                        Wave_Entity WaveEntity = new Wave_Entity(level, attacker, 60, (float) CMConfig.CeraunusWaveDamage);
+                                        Wave_Entity WaveEntity = new Wave_Entity(level, attacker, 60, (float) CMCommonConfig.Ceraunus.waveDamage);
                                         WaveEntity.setPos(spawnX, spawnY, spawnZ);
                                         WaveEntity.setState(1);
                                         WaveEntity.setYRot(-((float) (Mth.atan2(dx, dz) * (180D / Math.PI))));
@@ -1472,7 +1474,7 @@ public class PECAnimations {
                                     }
                                 }
                                 if (world.isClientSide) {
-                                    world.addParticle(new RingParticle.RingData(0.0F, ((float) Math.PI / 2F), 30, 0.337F, 0.925F, 0.8F, 1.0F, 85.0F, false, RingParticle.EnumRingBehavior.GROW), caster.getX(), caster.getY() + (double) 0.03F, caster.getZ(), 0.0F, 0.0F, 0.0F);
+                                    world.addParticle(new RingParticleOptions(0.0F, ((float)Math.PI / 2F), 30, 86, 236, 204, 1.0F, 85.0F, false, 0), caster.getX(), caster.getY() + (double)0.03F, caster.getZ(), (double)0.0F, (double)0.0F, (double)0.0F);
                                 }
                             }, AnimationEvent.Side.BOTH)
                     )
@@ -2519,7 +2521,7 @@ public class PECAnimations {
         } while (blockpos.getY() >= Mth.floor(minY) - 1);
 
         if (flag) {
-            entity.level().addFreshEntity(new Lightning_Storm_Entity(entity.level(), x, (double) blockpos.getY() + d0, z, rotation, delay, (float) CMConfig.ScyllaLightningStormDamage, (float) CMConfig.ScyllaLightningStormHpDamage, entity, size));
+            entity.level().addFreshEntity(new Lightning_Storm_Entity(entity.level(), x, (double) blockpos.getY() + d0, z, rotation, delay, (float) CMCommonConfig.Scylla.LightningStormDamage, (float) CMCommonConfig.Scylla.StormHpDamage, entity, size));
         }
 
     }
@@ -2579,7 +2581,7 @@ public class PECAnimations {
         } while (blockpos.getY() >= Mth.floor(minY) - 1);
 
         if (flag) {
-            world.addFreshEntity(new Phantom_Halberd_Entity(world, x, (double) blockpos.getY() + d0, z, rotation, delay, player, (float) CMConfig.PhantomHalberddamage));
+            world.addFreshEntity(new Phantom_Halberd_Entity(world, x, (double) blockpos.getY() + d0, z, rotation, delay, player, (float) CMCommonConfig.Maledictus.PhantomHalberdDamage));
         }
 
     }
@@ -2690,14 +2692,14 @@ public class PECAnimations {
                 float directionZ = Mth.cos(yaw * ((float) Math.PI / 180F)) * Mth.cos(pitch * ((float) Math.PI / 180F));
 
                 if (target != null && !target.isAlliedTo(self)) {
-                    Cursed_Sandstorm_Entity cursedSandstormEntity = new Cursed_Sandstorm_Entity(self, directionX, directionY, directionZ, level, (float) CMConfig.CursedSandstormDamage * damageRate, target);
+                    Cursed_Sandstorm_Entity cursedSandstormEntity = new Cursed_Sandstorm_Entity(self, directionX, directionY, directionZ, level, (float) CMCommonConfig.WrathOfTheDesert.damage * damageRate, target);
                     cursedSandstormEntity.setPos(startPos);
                     cursedSandstormEntity.setUp(15);
                     level.addFreshEntity(cursedSandstormEntity);
                     continue;
                 }
 
-                Cursed_Sandstorm_Entity cursedSandstormEntity = new Cursed_Sandstorm_Entity(self, directionX, directionY, directionZ, level, (float) CMConfig.CursedSandstormDamage * damageRate, null);
+                Cursed_Sandstorm_Entity cursedSandstormEntity = new Cursed_Sandstorm_Entity(self, directionX, directionY, directionZ, level, (float) CMCommonConfig.WrathOfTheDesert.damage * damageRate, null);
                 cursedSandstormEntity.setPos(startPos);
                 cursedSandstormEntity.setUp(15);
                 level.addFreshEntity(cursedSandstormEntity);
@@ -2718,7 +2720,7 @@ public class PECAnimations {
             ++theta;
             double vecX = Math.cos(theta);
             double vecZ = Math.sin(theta);
-            entity.level().addParticle(new RoarParticle.RoarData(duration, r, g, b, a, start, inc, end), entity.getX() + (double) vec * vecX + (double) (f * math), entity.getY() + (double) y, entity.getZ() + (double) vec * vecZ + (double) (f1 * math), 0.0F, 0.0F, 0.0F);
+            entity.level().addParticle(new RoarParticleOptions(duration, r, g, b, a, start, inc, end), entity.getX() + (double) vec * vecX + (double) (f * math), entity.getY() + (double) y, entity.getZ() + (double) vec * vecZ + (double) (f1 * math), 0.0F, 0.0F, 0.0F);
         }
 
     }
@@ -2811,7 +2813,7 @@ public class PECAnimations {
             blockpos = blockpos.above();
         } while (blockpos.getY() < Math.min(entity.level().getMaxBuildHeight(), entity.getBlockY() + 20));
 
-        entity.level().addFreshEntity(new Ancient_Desert_Stele_Entity(entity.level(), posX, (double) blockpos.getY() + d0 - (double) 3.0F, posZ, rotation, delay, (float) CMConfig.AncientDesertSteledamage, entity));
+        entity.level().addFreshEntity(new Ancient_Desert_Stele_Entity(entity.level(), posX, (double) blockpos.getY() + d0 - (double) 3.0F, posZ, rotation, delay, (float) CMCommonConfig.AncientRemnant.AncientDesertSteledamage, entity));
     }
 
     public static AnimationEvent.E0 shootCeraunus() {
@@ -2909,7 +2911,7 @@ public class PECAnimations {
     private static void createEnhancedFlameJetBurst(Level world, double centerX, double centerY, double centerZ, LivingEntity caster) {
         if (world.isClientSide()) return;
 
-        float damage = (float) CMConfig.FlareBombDamage;
+        float damage = (float) CMCommonConfig.NetheriteMonstrosity.FlareBombDamage;
         float yaw = caster.getYRot();
 
         for (int i = 0; i < 2; i++) {
@@ -2954,7 +2956,7 @@ public class PECAnimations {
                                               LivingEntity caster, float yaw) {
         if (world.isClientSide()) return;
 
-        float damage = (float) CMConfig.FlareBombDamage;
+        float damage = (float) CMCommonConfig.NetheriteMonstrosity.FlareBombDamage;
 
         Vec3 lookVec = caster.getLookAngle();
 
@@ -3001,7 +3003,7 @@ public class PECAnimations {
                                                   LivingEntity caster, float yaw) {
         if (world.isClientSide()) return;
 
-        float damage = (float) CMConfig.FlareBombDamage;
+        float damage = (float) CMCommonConfig.NetheriteMonstrosity.FlareBombDamage;
 
         Vec3 lookVec = caster.getLookAngle();
 

@@ -159,7 +159,7 @@ dependencies {
     implementation fg.deobf("curse.maven:epic-fight-avalon-1268823:7380216")
     implementation fg.deobf("curse.maven:epicfight-nightfall-1307848:7391941")
 
-    implementation fg.deobf("curse.maven:lendercataclysm-551586:6906993")
+    implementation fg.deobf("curse.maven:lendercataclysm-551586:7821746")
     implementation fg.deobf("curse.maven:curios-309927:6418456")
     implementation fg.deobf("curse.maven:lionfish-api-1001614:5922047")
 

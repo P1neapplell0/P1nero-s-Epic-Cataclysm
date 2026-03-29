@@ -1,6 +1,6 @@
 package com.p1nero.p1nero_ec.utils;
 
-import com.github.L_Ender.cataclysm.config.CMConfig;
+import com.github.L_Ender.cataclysm.config.CMCommonConfig;
 import com.github.L_Ender.cataclysm.entity.projectile.Axe_Blade_Entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -189,19 +189,19 @@ public class AxeBladeInvoker {
     }
 
     public static void createForwardAxeBlade(Level world, LivingEntity caster, double distance) {
-        createForwardAxeBlade(world, caster, distance, (float) CMConfig.AptrgangrAxeBladeDamage);
+        createForwardAxeBlade(world, caster, distance, (float) CMCommonConfig.Aptrgangr.AxeBladeDamage);
     }
 
     public static void createClawAxeBlades(Level world, LivingEntity caster, double distance) {
-        createClawAxeBlades(world, caster, distance, (float) CMConfig.AptrgangrAxeBladeDamage);
+        createClawAxeBlades(world, caster, distance, (float) CMCommonConfig.Aptrgangr.AxeBladeDamage);
     }
 
     public static void createRadialAxeBlades(Level world, LivingEntity caster, double startDistance) {
-        createRadialAxeBlades(world, caster, startDistance, (float) CMConfig.AptrgangrAxeBladeDamage);
+        createRadialAxeBlades(world, caster, startDistance, (float) CMCommonConfig.Aptrgangr.AxeBladeDamage);
     }
 
     public static void createFiveClawAxeBlades(Level world, LivingEntity caster, double baseDistance) {
-        createFiveClawAxeBlades(world, caster, baseDistance, (float) CMConfig.AptrgangrAxeBladeDamage);
+        createFiveClawAxeBlades(world, caster, baseDistance, (float) CMCommonConfig.Aptrgangr.AxeBladeDamage);
     }
 
     public static void createForwardAxeBlade(LivingEntity caster) {

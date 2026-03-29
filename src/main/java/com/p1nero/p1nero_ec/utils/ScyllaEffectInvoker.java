@@ -1,6 +1,6 @@
 package com.p1nero.p1nero_ec.utils;
 
-import com.github.L_Ender.cataclysm.config.CMConfig;
+import com.github.L_Ender.cataclysm.config.CMCommonConfig;
 import com.github.L_Ender.cataclysm.entity.effect.Lightning_Storm_Entity;
 import com.github.L_Ender.cataclysm.entity.effect.ScreenShake_Entity;
 import com.github.L_Ender.cataclysm.entity.effect.Wave_Entity;
@@ -193,7 +193,7 @@ public class ScyllaEffectInvoker {
     public static Water_Spear_Entity spawnWaterSpear(Level world, LivingEntity caster, Vec3 direction, double x, double y, double z, float damage) {
         if (world == null) return null;
 
-        Water_Spear_Entity spear = new Water_Spear_Entity(caster, direction, world, damage);
+        Water_Spear_Entity spear = new Water_Spear_Entity(caster, direction, world, damage, 1.0);
         spear.setPos(x, y, z);
         world.addFreshEntity(spear);
         return spear;
@@ -202,7 +202,7 @@ public class ScyllaEffectInvoker {
     public static Lightning_Spear_Entity spawnLightningSpear(Level world, LivingEntity caster, Vec3 direction, double x, double y, double z, float damage, float areaDamage, float hpDamage, float areaRadius) {
         if (world == null) return null;
 
-        Lightning_Spear_Entity spear = new Lightning_Spear_Entity(caster, direction, world, damage);
+        Lightning_Spear_Entity spear = new Lightning_Spear_Entity(caster, direction, world, damage, 1.0);
         spear.setAreaDamage(areaDamage);
         spear.setHpDamage(hpDamage);
         spear.setAreaRadius(areaRadius);
@@ -429,7 +429,7 @@ public class ScyllaEffectInvoker {
                 }
             } else {
                 Lightning_Spear_Entity lightningSpear = spawnLightningSpear(world, caster, direction, d0, d1, d2, damage,
-                        (float) CMConfig.ScyllaLightningAreaDamage, (float) CMConfig.ScyllaLightningStormHpDamage, 2.0F);
+                        (float) CMCommonConfig.Scylla.LightningAreaDamage, (float) CMCommonConfig.Scylla.StormHpDamage, 2.0F);
                 if (lightningSpear != null) {
                     lightningSpear.setYRot(yRot);
                     lightningSpear.setXRot(xRot);
@@ -462,8 +462,7 @@ public class ScyllaEffectInvoker {
                 }
             } else {
                 Lightning_Spear_Entity lightningSpear = spawnLightningSpear(world, caster, direction, spawnX, spawnY, spawnZ, damage,
-                        (float) CMConfig.ScyllaLightningAreaDamage,
-                        (float) CMConfig.ScyllaLightningStormHpDamage,
+                        (float) CMCommonConfig.Scylla.LightningAreaDamage, (float) CMCommonConfig.Scylla.StormHpDamage,
                         2.0F);
                 if (lightningSpear != null) {
                     lightningSpear.setYRot(yRot);
@@ -556,8 +555,7 @@ public class ScyllaEffectInvoker {
                 }
             } else {
                 Lightning_Spear_Entity lightningSpear = spawnLightningSpear(world, caster, direction, spawnPos.x, spawnPos.y, spawnPos.z, damage,
-                        (float) CMConfig.ScyllaLightningAreaDamage,
-                        (float) CMConfig.ScyllaLightningStormHpDamage,
+                        (float) CMCommonConfig.Scylla.LightningAreaDamage, (float) CMCommonConfig.Scylla.StormHpDamage,
                         1.8F);
                 if (lightningSpear != null) {
                     lightningSpear.setYRot(yRot);
@@ -596,8 +594,7 @@ public class ScyllaEffectInvoker {
                 }
             } else {
                 Lightning_Spear_Entity lightningSpear = spawnLightningSpear(world, caster, direction, spawnX, spawnY, spawnZ, damage,
-                        (float) CMConfig.ScyllaLightningAreaDamage,
-                        (float) CMConfig.ScyllaLightningStormHpDamage,
+                        (float) CMCommonConfig.Scylla.LightningAreaDamage, (float) CMCommonConfig.Scylla.StormHpDamage,
                         2.0F);
                 if (lightningSpear != null) {
                     lightningSpear.setYRot(yRot);
@@ -676,7 +673,7 @@ public class ScyllaEffectInvoker {
 
     public static void createForwardDualSpears(Level world, LivingEntity caster, int spearCount, float spreadAngle, float distance) {
         createForwardDualSpears(world, caster, spearCount, spreadAngle, distance,
-                (float) CMConfig.ScyllaSpearDamage);
+                (float) CMCommonConfig.Scylla.SpearDamage);
     }
 
     public static void createFanSpearBarrage(Level world, LivingEntity caster, int rows, int spearsPerRow,
@@ -687,7 +684,7 @@ public class ScyllaEffectInvoker {
 
     public static void createRotatingSpearRing(Level world, LivingEntity caster, double radius, int spearCount, float rotationSpeed) {
         createRotatingSpearRing(world, caster, radius, spearCount, rotationSpeed,
-                (float) CMConfig.ScyllaSpearDamage);
+                (float) CMCommonConfig.Scylla.SpearDamage);
     }
 
     public static void createFocusedSpearBeam(Level world, LivingEntity caster, int spearCount, float convergenceDistance) {
@@ -714,8 +711,7 @@ public class ScyllaEffectInvoker {
 
     public static void createForwardLightningStorm(Level world, LivingEntity caster, double distance) {
         createForwardLightningStorm(world, caster, distance,
-                (float) CMConfig.ScyllaLightningStormDamage,
-                (float) CMConfig.ScyllaLightningStormHpDamage,
+                (float) CMCommonConfig.Scylla.LightningAreaDamage, (float) CMCommonConfig.Scylla.StormHpDamage,
                 2.0F);
     }
 
@@ -735,19 +731,18 @@ public class ScyllaEffectInvoker {
 
     public static void createCircleLightningStorms(Level world, LivingEntity caster, double radius, int count) {
         createCircleLightningStorms(world, caster, radius, count,
-                (float) CMConfig.ScyllaLightningStormDamage,
-                (float) CMConfig.ScyllaLightningStormHpDamage,
+                (float) CMCommonConfig.Scylla.LightningStormDamage, (float) CMCommonConfig.Scylla.StormHpDamage,
                 2.0F);
     }
 
     public static void createDualSpearAttack(Level world, LivingEntity caster, LivingEntity target, int spearCount, float spreadAngle) {
         createDualSpearAttack(world, caster, target, spearCount, spreadAngle,
-                (float) CMConfig.ScyllaSpearDamage);
+                (float) CMCommonConfig.Scylla.SpearDamage);
     }
 
     public static void createStormSerpentSwarm(Level world, LivingEntity caster, LivingEntity target, int serpentCount, double spreadDistance) {
         createStormSerpentSwarm(world, caster, target, serpentCount, spreadDistance,
-                (float) CMConfig.ScyllaSnakeDamage);
+                (float) CMCommonConfig.Scylla.SnakeDamage);
     }
 
     public static void createWaveAttack(Level world, LivingEntity caster, int waveCount, float angleStep, double distance) {
@@ -756,9 +751,9 @@ public class ScyllaEffectInvoker {
 
     public static void createSparkExplosion(Level world, LivingEntity caster, double x, double y, double z, int sparkCount) {
         createSparkExplosion(world, caster, x, y, z, sparkCount,
-                (float) CMConfig.ScyllaLightningStormDamage,
-                (float) CMConfig.ScyllaLightningAreaDamage,
-                (float) CMConfig.ScyllaLightningStormHpDamage,
+                (float) CMCommonConfig.Scylla.LightningStormDamage,
+                (float) CMCommonConfig.Scylla.LightningAreaDamage,
+                (float) CMCommonConfig.Scylla.StormHpDamage,
                 2.0F);
     }
 
@@ -770,20 +765,17 @@ public class ScyllaEffectInvoker {
         double endZ = caster.getZ() + lookVec.z * distance;
 
         createLightningWall(caster.level(), caster, startX, startZ, endX, endZ, lightningCount,
-                (float) CMConfig.ScyllaLightningStormDamage,
-                (float) CMConfig.ScyllaLightningStormHpDamage);
+                (float) CMCommonConfig.Scylla.LightningStormDamage, (float) CMCommonConfig.Scylla.StormHpDamage);
     }
 
     public static void createCircularLightningWall(LivingEntity caster, double radius, int lightningCount) {
         createCircleLightningWall(caster.level(), caster, radius, lightningCount,
-                (float) CMConfig.ScyllaLightningStormDamage,
-                (float) CMConfig.ScyllaLightningStormHpDamage);
+                (float) CMCommonConfig.Scylla.LightningStormDamage, (float) CMCommonConfig.Scylla.StormHpDamage);
     }
 
     public static void createArcingLightningWall(LivingEntity caster, double distance, float arcAngle, int lightningCount) {
         createArcLightningWall(caster.level(), caster, distance, arcAngle, lightningCount,
-                (float) CMConfig.ScyllaLightningStormDamage,
-                (float) CMConfig.ScyllaLightningStormHpDamage);
+                (float) CMCommonConfig.Scylla.LightningStormDamage, (float) CMCommonConfig.Scylla.StormHpDamage);
     }
 
     public static void createForwardLightningStorm(LivingEntity caster, double distance) {
@@ -839,8 +831,7 @@ public class ScyllaEffectInvoker {
 
                 spawnLightningStorm(world, spawnX, spawnZ, caster.getY() - 5, caster.getY() + 3,
                         currentAngle, actualDelay,
-                        (float) CMConfig.ScyllaLightningStormDamage,
-                        (float) CMConfig.ScyllaLightningStormHpDamage,
+                        (float) CMCommonConfig.Scylla.LightningStormDamage, (float) CMCommonConfig.Scylla.StormHpDamage,
                         caster, 1.0F);
             }
         }
@@ -859,8 +850,7 @@ public class ScyllaEffectInvoker {
             int delay = (int) (i * rotationSpeed);
 
             spawnLightningStorm(world, spawnPos.x, spawnPos.y, spawnPos.z, caster.getY() + 3, angle, delay,
-                    (float) CMConfig.ScyllaLightningStormDamage,
-                    (float) CMConfig.ScyllaLightningStormHpDamage,
+                    (float) CMCommonConfig.Scylla.LightningStormDamage, (float) CMCommonConfig.Scylla.StormHpDamage,
                     caster, 1.5F);
         }
     }
@@ -882,9 +872,9 @@ public class ScyllaEffectInvoker {
             double spawnZ = casterPos.z + spearDirection.z * 2;
 
             Lightning_Spear_Entity spear = spawnLightningSpear(world, caster, spearDirection, spawnX, spawnY, spawnZ,
-                    (float) CMConfig.ScyllaSpearDamage,
-                    (float) CMConfig.ScyllaLightningAreaDamage,
-                    (float) CMConfig.ScyllaLightningStormHpDamage,
+                    (float) CMCommonConfig.Scylla.SpearDamage,
+                    (float) CMCommonConfig.Scylla.LightningAreaDamage,
+                    (float) CMCommonConfig.Scylla.StormHpDamage,
                     2.0F);
 
             if (spear != null) {
@@ -985,7 +975,7 @@ public class ScyllaEffectInvoker {
                     angle,
                     0,
                     damage * 0.7f,
-                    (float) CMConfig.ScyllaLightningStormHpDamage * 0.8f,
+                    (float) CMCommonConfig.Scylla.StormHpDamage * 0.8f,
                     caster,
                     2.3F
             );
@@ -994,8 +984,8 @@ public class ScyllaEffectInvoker {
                     stormX, center.y + 1, stormZ,
                     3,
                     damage * 0.3f,
-                    (float) CMConfig.ScyllaLightningAreaDamage * 0.6f,
-                    (float) CMConfig.ScyllaLightningStormHpDamage * 0.4f,
+                    (float) CMCommonConfig.Scylla.LightningAreaDamage * 0.6f,
+                    (float) CMCommonConfig.Scylla.StormHpDamage * 0.4f,
                     1.5F
             );
         }
@@ -1006,7 +996,7 @@ public class ScyllaEffectInvoker {
                 caster.getYRot() * ((float) Math.PI / 180F),
                 0,
                 damage,
-                (float) CMConfig.ScyllaLightningStormHpDamage,
+                (float) CMCommonConfig.Scylla.StormHpDamage,
                 caster,
                 2.2F
         );
@@ -1086,8 +1076,8 @@ public class ScyllaEffectInvoker {
                 }
             } else {
                 Lightning_Spear_Entity lightningSpear = ScyllaEffectInvoker.spawnLightningSpear(level, caster, direction, spawnX, spawnY, spawnZ, damage,
-                        (float) CMConfig.ScyllaLightningAreaDamage * 0.8f,
-                        (float) CMConfig.ScyllaLightningStormHpDamage * 0.6f,
+                        (float) CMCommonConfig.Scylla.LightningAreaDamage * 0.8f,
+                        (float) CMCommonConfig.Scylla.StormHpDamage * 0.6F,
                         1.5F);
                 if (lightningSpear != null) {
                     lightningSpear.setYRot(yRot);

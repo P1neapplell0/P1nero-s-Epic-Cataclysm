@@ -1,6 +1,6 @@
 package com.p1nero.p1nero_ec.mixin.weapon_desc;
 
-import com.github.L_Ender.cataclysm.items.infernal_forge;
+import com.github.L_Ender.cataclysm.items.Infernal_forge;
 import com.p1nero.p1nero_ec.PEpicCataclysmMod;
 import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.p1nero_ec.client.KeyMappings;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-@Mixin(value = infernal_forge.class)
+@Mixin(value = Infernal_forge.class)
 public class InfernalForgeClientMixin {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)

@@ -44,7 +44,7 @@ public class PEpicCataclysmMod {
                     Ceraunus.class,
                     Astrape.class,
                     Wrath_of_the_desert.class,
-                    infernal_forge.class,
+                    Infernal_forge.class,
                     Gauntlet_of_Guard.class,
                     The_Annihilator.class
             );
