@@ -1,13 +1,20 @@
 package com.p1nero.p1nero_ec.gameassets;
 
+import com.asanginxst.epicfightx.capabilities.item.TridentCapabilityX;
+import com.asanginxst.epicfightx.gameassets.EpicFightSkillsX;
+import com.asanginxst.epicfightx.gameassets.animations.AnimationsX;
+import com.asanginxst.epicfightx.gameassets.animations.ExtraAnimations;
 import com.hm.efn.gameasset.EFNAnimations;
 import com.hm.efn.gameasset.animations.*;
 import com.p1nero.p1nero_ec.PEpicCataclysmMod;
+import com.p1nero.p1nero_ec.capability.item.BrontesCapability;
 import com.p1nero.p1nero_ec.capability.item.CursedBowCapability;
 import com.p1nero.p1nero_ec.capability.item.TidalClawCapability;
 import com.p1nero.p1nero_ec.capability.item.WrathOfTheDesertCapability;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.LivingMotions;
@@ -234,6 +241,51 @@ public class PECWeaponPresets {
                     .addAnimationsModifier(LivingMotions.SHOT, Animations.BIPED_BOW_SHOT)
                     .constructor(CursedBowCapability::new);
 
+    public static final Function<Item, CapabilityItem.Builder> BRONTES = (item) -> BrontesCapability.builder()
+            .zoomInType(CapabilityItem.ZoomInType.USE_TICK)
+            .constructor(TridentCapabilityX::new)
+            .collider(ColliderPreset.SPEAR)
+            .category(CapabilityItem.WeaponCategories.TRIDENT);
+
+
+    public static final Function<Item, CapabilityItem.Builder> MEAT_CUTTER = (item) -> {
+        WeaponCapability.Builder builder = WeaponCapability.builder()
+                .category(CapabilityItem.WeaponCategories.GREATSWORD)
+                .styleProvider((playerpatch) -> CapabilityItem.Styles.TWO_HAND)
+                .collider(ColliderPreset.GREATSWORD)
+                .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                .canBePlacedOffhand(false)
+                .reach(1.0F)
+                .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                        AnimationsX.GREATSWORD_AUTO1,
+                        AnimationsX.GREATSWORD_AUTO2,
+                        ExtraAnimations.GREATSWORD_AUTO3,
+                        ExtraAnimations.GREATSWORD_AUTO4,
+                        ExtraAnimations.GREATSWORD_AUTO5,
+                        AnimationsX.GREATSWORD_DASH,
+                        AnimationsX.GREATSWORD_AIR_SLASH)
+                .innateSkill(CapabilityItem.Styles.TWO_HAND, (itemstack) -> EpicFightSkillsX.STEEL_WHIRLWIND)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, ExtraAnimations.BIPED_HOLD_TWOHAND_HEAVY)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, ExtraAnimations.BIPED_WALK_TWOHAND_HEAVY)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, ExtraAnimations.BIPED_RUN_TWOHAND_HEAVY)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.JUMP, ExtraAnimations.BIPED_JUMP_TWOHAND_HEAVY)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.CHASE, AnimationsX.BIPED_WALK_GREATSWORD)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.KNEEL, AnimationsX.BIPED_HOLD_GREATSWORD)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.SNEAK, AnimationsX.BIPED_HOLD_GREATSWORD)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.SWIM, AnimationsX.BIPED_HOLD_GREATSWORD)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.FLY, AnimationsX.BIPED_HOLD_GREATSWORD)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.CREATIVE_FLY, AnimationsX.BIPED_HOLD_GREATSWORD)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.CREATIVE_IDLE, AnimationsX.BIPED_HOLD_SPEAR)
+                .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, PECAnimations.MEAT_CUTTER_LOOP);
+
+        if (item instanceof TieredItem tieredItem) {
+            builder.hitSound(tieredItem.getTier() == Tiers.WOOD ? EpicFightSounds.BLUNT_HIT.get() : EpicFightSounds.BLADE_HIT.get());
+            builder.hitParticle(tieredItem.getTier() == Tiers.WOOD ? EpicFightParticles.HIT_BLUNT.get() : EpicFightParticles.HIT_BLADE.get());
+        }
+
+        return builder;
+    };
+
     @SubscribeEvent
     public static void register(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "tidal_claw"), TIDAL_CLAW);
@@ -243,8 +295,10 @@ public class PECWeaponPresets {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "dual_annihilator"), DUAL_ANNIHILATOR);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "soul_render"), SOUL_RENDER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "astrape"), ASTRAPE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "brontes"), BRONTES);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "the_incinerator"), THE_INCINERATOR);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "wrath_of_the_desert"), WRATH_OF_THE_DESERT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "cursed_bow"), CURSED_BOW);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(PEpicCataclysmMod.MOD_ID, "meat_cutter"), MEAT_CUTTER);
     }
 }

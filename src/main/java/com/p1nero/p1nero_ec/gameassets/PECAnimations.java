@@ -3,8 +3,6 @@ package com.p1nero.p1nero_ec.gameassets;
 import com.github.L_Ender.cataclysm.capabilities.RenderRushCapability;
 import com.github.L_Ender.cataclysm.client.particle.Options.RingParticleOptions;
 import com.github.L_Ender.cataclysm.client.particle.Options.RoarParticleOptions;
-import com.github.L_Ender.cataclysm.client.particle.RingParticle;
-import com.github.L_Ender.cataclysm.client.particle.RoarParticle;
 import com.github.L_Ender.cataclysm.config.CMCommonConfig;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.Abyss_Blast_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.Abyss_Blast_Portal_Entity;
@@ -14,6 +12,7 @@ import com.github.L_Ender.cataclysm.init.*;
 import com.github.L_Ender.cataclysm.items.Ceraunus;
 import com.github.L_Ender.cataclysm.items.Cursed_bow;
 import com.github.L_Ender.cataclysm.items.Wrath_of_the_desert;
+import com.hm.efn.EFN;
 import com.hm.efn.gameasset.animations.EFNGreatSwordAnimations;
 import com.hm.efn.registries.EFNMobEffectRegistry;
 import com.hm.efn.util.EffectEntityInvoker;
@@ -115,6 +114,7 @@ public class PECAnimations {
     public static final Collider BEDIVERE_SKILL_B_HIT = new OBBCollider(1.5, 1.5, 3, 0.0, 1.25, -2);
     public static final Collider CLAW = new OBBCollider(1, 1.4, 1, 0.0, 0.0, 0.0);
     public static AnimationManager.AnimationAccessor<StaticAnimation> CLAW_SHOOT;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> MEAT_CUTTER_LOOP;
     public static AnimationManager.AnimationAccessor<ScanAttackAnimation> BOW_1;
     public static AnimationManager.AnimationAccessor<ScanAttackAnimation> BOW_2;
     public static AnimationManager.AnimationAccessor<ScanAttackAnimation> BOW_3;
@@ -163,6 +163,10 @@ public class PECAnimations {
         event.newBuilder(PEpicCataclysmMod.MOD_ID, (builder) -> {
 
             CLAW_SHOOT = builder.nextAccessor("living/claw_shoot", (accessor) -> new StaticAnimation(0.15F, true, accessor, Armatures.BIPED));
+
+            MEAT_CUTTER_LOOP = builder.nextAccessor("living/meat_cutter_loop", (accessor) ->
+                    new StaticAnimation(0.15F, true, accessor, Armatures.BIPED)
+                            .setResourceLocation(EFN.MODID, "biped/thornwheel/thornwheel_loop"));
 
             BOW_1 = builder.nextAccessor("bow/bow_auto1", (accessor) ->
                     new ScanAttackAnimation(0.15F, 0, 0.15F, 65 / 60F, 65 / 60F,

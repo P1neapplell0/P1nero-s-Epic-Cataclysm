@@ -1,0 +1,10 @@
+{
+  "type": "p1nero_ec:meat_cutter",
+  "attributes": {
+    "common": {
+      "armor_negation":30.0,
+      "speed_bonus": 0.2,
+      "max_strikes":4
+    }
+  }
+}

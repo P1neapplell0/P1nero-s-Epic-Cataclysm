@@ -1,1 +1,1 @@
-要求技能2有目标才可使用
+compatible with latest cataclysm

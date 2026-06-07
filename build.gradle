@@ -157,12 +157,13 @@ dependencies {
     implementation fg.deobf("maven.modrinth:epic-fight:${epicfight_version}")
     implementation fg.deobf("maven.modrinth:epic-fight-invincible-lib:${invincible_lib_version}")
     implementation fg.deobf("curse.maven:epic-fight-avalon-1268823:7380216")
-    implementation fg.deobf("curse.maven:epicfight-nightfall-1307848:7391941")
+    implementation fg.deobf("curse.maven:epicfight-nightfall-1307848:8082392")
 
-    implementation fg.deobf("curse.maven:lendercataclysm-551586:7821746")
+    implementation fg.deobf("curse.maven:lendercataclysm-551586:7934870")
     implementation fg.deobf("curse.maven:curios-309927:6418456")
     implementation fg.deobf("curse.maven:lionfish-api-1001614:5922047")
 
+    implementation fg.deobf("maven.modrinth:epicfight-extra:1.1.9-mc1.20.1-forge")
 //    implementation fg.deobf("curse.maven:embeddium-908741:5681725")
 //    implementation fg.deobf("curse.maven:oculus-581495:6020952")
 }
