@@ -105,12 +105,12 @@ public class PECDataManager {
         }
 
         public void lock(Player player) {
-            getPECPlayer(player).putBoolean(key + "isLocked", true);
+            putData(player, key + "isLocked", true);
             isLocked = true;
         }
 
         public void unLock(Player player) {
-            getPECPlayer(player).putBoolean(key + "isLocked", false);
+            putData(player, key + "isLocked", false);
             LocalPlayer localPlayer = Minecraft.getInstance().player;
             isLocked = false;
         }
@@ -139,7 +139,7 @@ public class PECDataManager {
         @Override
         public void put(Player player, String value) {
             if (!isLocked(player)) {
-                getPECPlayer(player).putString(key, value);
+                putData(player, key, value);
                 if (player instanceof ServerPlayer serverPlayer) {
                     PECPacketRelay.sendToPlayer(PECPacketHandler.INSTANCE, new PersistentStringDataSyncPacket(key, isLocked, value), serverPlayer);
                 } else {
@@ -176,7 +176,7 @@ public class PECDataManager {
         @Override
         public void put(Player player, Double value) {
             if (!isLocked(player)) {
-                getPECPlayer(player).putDouble(key, value);
+                putData(player, key, value);
                 if (player instanceof ServerPlayer serverPlayer) {
                     PECPacketRelay.sendToPlayer(PECPacketHandler.INSTANCE, new PersistentDoubleDataSyncPacket(key, isLocked, value), serverPlayer);
                 } else {
@@ -215,7 +215,7 @@ public class PECDataManager {
             if (isLocked(player))
                 return;
 
-            getPECPlayer(player).putBoolean(key, value);
+            putData(player, key, value);
             if (player instanceof ServerPlayer serverPlayer) {
                 PECPacketRelay.sendToPlayer(PECPacketHandler.INSTANCE, new PersistentBoolDataSyncPacket(key, isLocked, value), serverPlayer);
             } else {
